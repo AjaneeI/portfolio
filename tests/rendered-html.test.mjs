@@ -30,6 +30,26 @@ test('project and resume routes render with honest status', async () => {
   assert.match(await page('/resume'), /Expected May 2027/);
 });
 
+test('Gateway is fourth, credits the team, and discloses fixture and live-verification limits', async () => {
+  const html = await page('/');
+  const entries = [...html.matchAll(/<article class="project">([\s\S]*?)<\/article>/g)].map(match => match[1]);
+  assert.equal(entries.length, 4);
+  assert.deepEqual(entries.map(entry => entry.match(/<p class="project-name">([^<]+)<\/p>/)[1]), [
+    'Agentic Analytics Lab', 'Agent Systems Evidence Scout', 'HomeOps Agent', 'Glasswing Gateway',
+  ]);
+  const gateway = entries[3];
+  assert.match(gateway, /Collaborative Full-Stack \/ Applied AI Engineering/);
+  assert.match(gateway, /Team implementation/);
+  assert.doesNotMatch(gateway, /What I built|Read case study|live demo/i);
+  for (const boundary of ['synthetic identity and model outputs', 'Hosted Supabase behavior and live-model outcomes remain unverified', 'not a production service', 'Later release hardening was AI-assisted', 'Nathan, Andrew, and LeulTe']) {
+    assert.ok(gateway.includes(boundary), boundary);
+  }
+  assert.match(gateway, /href="https:\/\/github.com\/AjaneeI\/glasswing-gateway"/);
+  assert.match(gateway, /href="https:\/\/github.com\/AjaneeI\/glasswing-gateway\/blob\/main\/docs\/contributions.md"/);
+  assert.ok(html.indexOf('supporting-work') > html.indexOf('Glasswing Gateway'));
+  assert.match(html, /href="\/work\/closing-the-loop"/);
+});
+
 test('project pages publish self-contained article metadata', async () => {
   const projects = [
     {

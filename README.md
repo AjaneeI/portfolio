@@ -31,3 +31,9 @@ npm test
 - `/resume`: web résumé and canonical PDF download
 
 The production deployment is managed through the existing OpenAI Sites project recorded in `.openai/hosting.json`.
+
+## GitHub source and Gateway update
+
+This repository imports verified Sites version 26 for reviewable source control. GitHub pushes and merges do not automatically update the live site. Deployment remains a separate, explicitly approved Sites action; no deployment workflow is added here.
+
+See [source provenance and import boundaries](docs/source-provenance.md), the [source hash manifest](docs/source-import-manifest.json), and [Gateway evidence and verification](docs/gateway-portfolio-update.md).
