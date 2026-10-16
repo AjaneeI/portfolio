@@ -1,0 +1,157 @@
+{
+  "source_commit": "a05dd2d812f8029c7feb89343930e9833337c684",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "547f59603028195ff9f8a87d04c4651551e8bd0d68f075257dfd549cd846b25b"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "4624a0a8f44326ed2fe63ecfcf85aa96f18de010f31bd56889b001931074a1fb"
+    },
+    {
+      "path": ".openai/hosting.json",
+      "sha256": "92391a3f95cb8099596e951eddc3b0da32580b16b09b7ffa2e9ba5bf906f8cbd"
+    },
+    {
+      "path": "README.md",
+      "sha256": "89e70aabf199eec8d97a80e23d735c34b5c91998fca877ef5c0a8072178d521c"
+    },
+    {
+      "path": "app/globals.css",
+      "sha256": "89dc113dd0cca0eaa74aa0da4c0f348eed909e1d7754efab5d8c1c95d142a96e"
+    },
+    {
+      "path": "app/layout.tsx",
+      "sha256": "fa36d7a06b09062b0f004ff2ce81ea2057e06601916d771e7cdd0a2fdad05176"
+    },
+    {
+      "path": "app/manifest.ts",
+      "sha256": "1b0c765f058eb69b23c66afe784cd63fe891cba3151a2921389ecfb46869fa6f"
+    },
+    {
+      "path": "app/not-found.tsx",
+      "sha256": "e5252d7fcb7d8f46c0fa15d1a4c11ace5f609070b9cf2b3a65d366e417812fdc"
+    },
+    {
+      "path": "app/page.tsx",
+      "sha256": "ec00b2cd54c24292a5de3e5f8118effbdca422f6125ceb0364756c211e26c5ba"
+    },
+    {
+      "path": "app/project-metadata.tsx",
+      "sha256": "afef0ae071bd4704f4a58cd68b09bf1d53d6cc9872329cef6b880c9410c8ecfb"
+    },
+    {
+      "path": "app/resume/page.tsx",
+      "sha256": "d9d64bc3730a15bd8c3c4bd2c62a1e65dab0cd8e262cc6153288551afba69b05"
+    },
+    {
+      "path": "app/robots.ts",
+      "sha256": "ea38e0bad7abb7cb9531b7251b0f4630ee04895166de7e0594225837e5b0c983"
+    },
+    {
+      "path": "app/site-nav.tsx",
+      "sha256": "59316386bd3faf5e5891091a52d578276d3b308ff6e6aa6fe33b31b1f7910507"
+    },
+    {
+      "path": "app/sitemap.ts",
+      "sha256": "b613041978f34c8614ce75f5843b2b0a8b61a31c85a0be9bb87719a3af729213"
+    },
+    {
+      "path": "app/work/agent-systems-evidence-scout/page.tsx",
+      "sha256": "b364e60c21dffccd2e6e067c567c91adc43184a08125ab278da346cf2322cc76"
+    },
+    {
+      "path": "app/work/agentic-analytics-lab/page.tsx",
+      "sha256": "720b0f8e0e2e94ebc189f4b18ce999497d3f6ea90fcfe190357dce0daad01acb"
+    },
+    {
+      "path": "app/work/closing-the-loop/page.tsx",
+      "sha256": "152d229d2694792544915df53fd43188c0684f175371a2966b4efda2621ac087"
+    },
+    {
+      "path": "app/work/homeops-agent/page.tsx",
+      "sha256": "afb40e01acf6061cba62c0e30b3ec631d6f20e91bba1b6fbc53c2ddb744bcf7c"
+    },
+    {
+      "path": "build/sites-vite-plugin.ts",
+      "sha256": "579ad1ec3a9a284e1500bc5bccdcb7e1348d04266a8a61017f0aa7a788362751"
+    },
+    {
+      "path": "docs/resume-pdf.md",
+      "sha256": "ec84feb49cf527c54d7944710e06a8b33fff703520a3825de9336d88604f7298"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "6090bd544865638d8c77a3443f037b3b289596a7ec1e1dccc3a13677e6d1ca83"
+    },
+    {
+      "path": "next-env.d.ts",
+      "sha256": "a291a6b60536fec0a3b9d4ffd6d51179b463e9bc20281d7499d756813b4c07d5"
+    },
+    {
+      "path": "next.config.ts",
+      "sha256": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "43972281afec2365156ebafd44fc511f1c3456936d8c8c6601690c6142bb930a"
+    },
+    {
+      "path": "package.json",
+      "sha256": "cf66fc4a279e127fb15b94acd3f05f36501ca7b0cde1f7d3a7d7fa0b74dccc9c"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "sha256": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde"
+    },
+    {
+      "path": "public/Ajanee_Igharo_Applied_AI_Engineer_Resume.pdf",
+      "sha256": "47af013d93d864ea721f2c38726be61142fdae3c312a43c266cd6d23e494ee08"
+    },
+    {
+      "path": "public/favicon.png",
+      "sha256": "90ed1e888d55d7182dc7dd7742130c2e24ac38826b9447b80af4a385da7d4f0d"
+    },
+    {
+      "path": "public/favicon.svg",
+      "sha256": "fefc6cecfe35c4beee6f702d138bf7d5181424e4e245b8afd842ecf3d3f016aa"
+    },
+    {
+      "path": "public/hero-architecture.jpg",
+      "sha256": "e15dae83d39a5a104149163a42ee83ff6b165fbec6fbe9d46489877a5fe1da81"
+    },
+    {
+      "path": "public/og.png",
+      "sha256": "dd54faae80421a80f79d86da7475510c924c1df039cc1b5be29d3ab3b91bc107"
+    },
+    {
+      "path": "scripts/export-resume.mjs",
+      "sha256": "382e113dd4acaef7563a7f09d02aaec5d41640ef85942faced4b31f0194122ca"
+    },
+    {
+      "path": "scripts/generate-resume.py",
+      "sha256": "a4bf57ba0116a59a147fde52da2a096d34368a19b6cd36429b1f8c05bd703e76"
+    },
+    {
+      "path": "scripts/verify-resume.py",
+      "sha256": "66c6b80442716d64fb4d22e04d4fa69391802764fb389a46094a18f34109ca90"
+    },
+    {
+      "path": "tests/rendered-html.test.mjs",
+      "sha256": "b381227388860fc1bb1889c5023239a20c2d5be2cab04e05c1e62d12b6ea14b8"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "379054f6cec60ebd0e18c47a3ce72b2cc1b3f7abd0037c668e87cb2070891147"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "f7c14b8a38546bb6a7ec93cba22f8e8f131da9fbfe8b39327422ed5bb98d4613"
+    },
+    {
+      "path": "worker/index.ts",
+      "sha256": "16bb0d7b0692b24c0d0e9f755d115fc42239e6940e299c6d7ef827de127485bf"
+    }
+  ]
+}
