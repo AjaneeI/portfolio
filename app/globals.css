@@ -141,6 +141,45 @@ img { display:block; max-width:100%; }
 .resume-cta p { max-width:660px; margin:0; font:400 23px/1.35 Georgia,serif; }
 .resume-cta a { flex:0 0 auto; padding-bottom:4px; border-bottom:1px solid var(--lime); color:var(--lime); text-transform:uppercase; font-size:13px; font-weight:750; letter-spacing:.11em; }
 
+
+/* Independent founder-led series: deliberately complements the editorial portfolio, not the project-evidence hierarchy. */
+.series-showcase { padding:0 clamp(28px,7vw,112px); background:var(--cream); scroll-margin-top:30px; }
+.series-frame { display:grid; grid-template-columns:132px minmax(0,1.15fr) minmax(340px,.95fr); gap:clamp(22px,3vw,48px); align-items:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:46px 0; }
+.series-identity { display:flex; justify-content:center; align-items:center; min-height:136px; border-right:1px solid var(--line); padding-right:24px; }
+.series-identity img { width:108px; height:108px; object-fit:contain; }
+.series-kicker { margin:0 0 14px; color:var(--green); text-transform:uppercase; font-size:10px; font-weight:750; letter-spacing:.18em; }
+.series-description h2 { max-width:640px; margin:0 0 11px; font:italic 400 clamp(39px,4.5vw,64px)/.98 Georgia,"Times New Roman",serif; letter-spacing:-.05em; color:var(--green); }
+.series-tagline { margin:0; font-size:16px; line-height:1.5; }
+.series-credit { margin:12px 0 0; font:italic 16px/1.4 Georgia,"Times New Roman",serif; }
+.series-events { padding-left:clamp(20px,3vw,48px); border-left:1px solid var(--line); }
+.series-events-title { margin:0 0 9px; font-size:10px; font-weight:750; letter-spacing:.16em; text-transform:uppercase; color:var(--green); }
+.series-event { display:grid; grid-template-columns:116px minmax(0,1fr); gap:16px; padding:14px 0; border-bottom:1px solid var(--line); }
+.series-event-date span { display:block; font-size:10px; font-weight:750; letter-spacing:.1em; color:var(--green); }
+.series-event-date small { display:block; margin-top:6px; color:var(--soft); font-size:11px; line-height:1.35; }
+.series-event-detail h4 { margin:0; font:400 18px/1.2 Georgia,"Times New Roman",serif; }
+.series-event-detail p { margin:6px 0 9px; font-size:12px; line-height:1.4; color:var(--soft); }
+.series-event-detail a { font-size:11px; font-weight:750; color:var(--green); text-decoration:underline; text-underline-offset:4px; }
+.series-event-detail a:hover,.series-calendar-link:hover { color:#0c3024; }
+.series-registration-pending { display:inline-block; font-size:11px; font-weight:700; color:#594c63; }
+.series-calendar-link { display:inline-flex; gap:20px; justify-content:space-between; align-items:center; margin-top:16px; min-height:42px; padding:0 16px; background:var(--green); border-radius:6px; color:var(--cream); font-size:11px; font-weight:750; text-transform:uppercase; letter-spacing:.06em; }
+.series-calendar-link:hover { background:#0e392a; color:var(--cream); }
+@media (max-width:1200px) {
+  .series-frame { grid-template-columns:110px minmax(0,1fr); }
+  .series-events { grid-column:2; border-left:0; padding:0; }
+  .series-identity { grid-row:1 / span 2; }
+}
+@media (max-width:760px) {
+  .series-showcase { padding:0 22px; }
+  .series-frame { grid-template-columns:74px minmax(0,1fr); gap:16px; padding:34px 0; }
+  .series-identity { grid-row:auto; min-height:76px; padding-right:10px; }
+  .series-identity img { width:72px; height:72px; }
+  .series-description h2 { font-size:clamp(33px,8vw,50px); }
+  .series-tagline,.series-credit { font-size:14px; }
+  .series-events { grid-column:1 / -1; }
+  .series-event { grid-template-columns:95px minmax(0,1fr); gap:12px; }
+  .series-event-detail h4 { font-size:17px; }
+}
+
 @media (max-width:1020px) {
   .editorial-hero { min-height:850px; }.hero-copy { width:65%; padding-left:6vw; }.hero-copy h1 { font-size:clamp(66px,9.2vw,94px); }.project-evidence { grid-template-columns:1fr 1fr; }.project-evidence div:last-child { grid-column:1/-1; }.context > div { grid-template-columns:1fr; }.context div > p { margin-left:auto; }
 }
