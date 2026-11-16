@@ -226,3 +226,15 @@ test('Closing the Loop has one canonical route and stale route redirects permane
   assert.equal(stale.status, 308);
   assert.equal(stale.headers.get('location'), 'http://localhost/work/closing-the-loop');
 });
+
+test('approved Applied AI in Practice section stays between hero and selected work', async () => {
+  const html = await page('/');
+  const sectionStart = html.indexOf('class="series-feature"');
+  const workStart = html.indexOf('class="work" id="work"');
+  assert.ok(sectionStart > html.indexOf('class="editorial-hero"'));
+  assert.ok(workStart > sectionStart);
+  for (const expected of ['Applied AI', 'in Practice', 'Founder &amp; Series Lead', 'Amrutha Killada', 'Alex Turgeon', 'Logan Reilly', '2026-12-03', '2026-12-11', 'https://luma.com/calendar/cal-Hn5j7FxO7A7Ensp', '/applied-ai-in-practice-ap-monogram.png']) {
+    assert.ok(html.includes(expected), expected);
+  }
+  assert.equal((html.match(/<h1/g) || []).length, 1);
+});
