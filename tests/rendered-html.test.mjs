@@ -227,22 +227,36 @@ test('Closing the Loop has one canonical route and stale route redirects permane
   assert.equal(stale.headers.get('location'), 'http://localhost/work/closing-the-loop');
 });
 
-test('independent Applied AI in Practice feature is above work, but December 11 registration is gated', async () => {
+test('independent series preserves its place, credit, artwork and public calendar', async () => {
   const html = await page('/');
-  assert.ok(html.includes('Applied AI in Practice'));
-  assert.ok(html.includes('Founded &amp; led by Ajanee Igharo'));
-  assert.ok(html.includes('Hands-on learning. Industry connections. Practical AI.'));
-  assert.ok(html.includes('Amrutha'));
-  assert.ok(html.includes('Alex Turgeon and Logan Reilly'));
-  assert.ok(html.includes('Becoming AI-First: Context Capture'));
-  assert.ok(html.includes('Registration coming soon'));
+  const series = html.match(/<section class="series-showcase"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(series, 'series section exists');
+  for (const text of ['Applied AI in Practice', 'Founded &amp; led by Ajanee Igharo', 'Hands-on learning. Industry connections. Practical AI.']) {
+    assert.ok(series.includes(text), text);
+  }
   assert.ok(html.indexOf('id="series"') > html.indexOf('id="hero-title"'));
   assert.ok(html.indexOf('id="series"') < html.indexOf('id="work"'));
-  assert.ok(html.includes('href="/#series"'));
-  assert.match(html, /href="https:\/\/luma\.com\/1sts0xgz"/);
-  assert.match(html, /href="https:\/\/luma\.com\/calendar\/cal-Hn5j7FxO7A7Ensp"/);
-  assert.ok(html.includes('src="/applied-ai-in-practice-ap-monogram.png"'));
-  assert.doesNotMatch(html, /luma\.com\/gzrgw7b0/);
-  const dates = (html.match(/class="series-event"/g) || []);
-  assert.equal(dates.length, 2);
+  assert.match(series, /src="\/applied-ai-in-practice-ap-monogram\.png"/);
+  assert.doesNotMatch(series, /UMass|University|PEAAII|sponsor|waitlist/i);
+  const links = [...series.matchAll(/href="([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(links, ['https://luma.com/1sts0xgz', 'https://luma.com/calendar/cal-Hn5j7FxO7A7Ensp']);
+});
+
+test('workshops publish the approved programs and keep December 11 registration gated', async () => {
+  const html = await page('/');
+  const sessions = [...html.matchAll(/<article class="series-event"[^>]*>([\s\S]*?)<\/article>/g)].map(match => match[1]);
+  assert.equal(sessions.length, 2);
+  assert.match(sessions[0], /GTM Engineering: Discover an emerging career at the intersection of AI, business, marketing, and technology\./);
+  assert.match(sessions[0], /Amrutha “Amu” Killada/);
+  assert.match(sessions[0], /datetime="2026-12-03"/i);
+  assert.match(sessions[0], /Thu[^<]*Dec 3, 2026/);
+  assert.match(sessions[0], /3:30–4:45 PM ET/);
+  assert.match(sessions[0], /href="https:\/\/luma\.com\/1sts0xgz"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
+  assert.match(sessions[1], /Becoming AI-First: Context Capture &amp; Starting with the Why/);
+  assert.match(sessions[1], /Alex Turgeon and Logan Reilly/);
+  assert.match(sessions[1], /datetime="2026-12-11"/i);
+  assert.match(sessions[1], /Fri[^<]*Dec 11, 2026/);
+  assert.match(sessions[1], /12–1:30 PM ET/);
+  assert.match(sessions[1], /Registration coming soon/);
+  assert.doesNotMatch(sessions[1], /<a\b|href=|<button\b|role="(?:link|button)"/);
 });
