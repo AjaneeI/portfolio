@@ -260,3 +260,19 @@ test('workshops publish the approved programs and keep December 11 registration 
   assert.match(sessions[1], /Registration coming soon/);
   assert.doesNotMatch(sessions[1], /<a\b|href=|<button\b|role="(?:link|button)"/);
 });
+
+test('homepage and shared navigation use monochrome SVG arrows instead of emoji glyphs', async () => {
+  const html = await page('/');
+  assert.doesNotMatch(html, /\u2197/);
+  const hero = html.match(/<section class="editorial-hero"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(hero);
+  assert.equal((hero.match(/class="arrow-up-right"/g) || []).length, 3);
+  for (const href of ['#work', 'https://github.com/AjaneeI', '/resume']) {
+    assert.ok(hero.includes(`href="${href}"`), href);
+  }
+  assert.match(hero, /<svg[^>]*stroke="currentColor"[^>]*class="arrow-up-right"[^>]*aria-hidden="true"/);
+  const nav = html.match(/<nav class="nav"[\s\S]*?<\/nav>/)?.[0];
+  assert.ok(nav);
+  assert.equal((nav.match(/class="arrow-up-right"/g) || []).length, 2);
+  assert.match(nav, /href="mailto:ajaneeigharo@gmail.com"/);
+});
