@@ -226,3 +226,23 @@ test('Closing the Loop has one canonical route and stale route redirects permane
   assert.equal(stale.status, 308);
   assert.equal(stale.headers.get('location'), 'http://localhost/work/closing-the-loop');
 });
+
+test('independent Applied AI in Practice feature is above work, but December 11 registration is gated', async () => {
+  const html = await page('/');
+  assert.ok(html.includes('Applied AI in Practice'));
+  assert.ok(html.includes('Founded &amp; led by Ajanee Igharo'));
+  assert.ok(html.includes('Hands-on learning. Industry connections. Practical AI.'));
+  assert.ok(html.includes('Amrutha'));
+  assert.ok(html.includes('Alex Turgeon and Logan Reilly'));
+  assert.ok(html.includes('Becoming AI-First: Context Capture'));
+  assert.ok(html.includes('Registration coming soon'));
+  assert.ok(html.indexOf('id="series"') > html.indexOf('id="hero-title"'));
+  assert.ok(html.indexOf('id="series"') < html.indexOf('id="work"'));
+  assert.ok(html.includes('href="/#series"'));
+  assert.match(html, /href="https:\/\/luma\.com\/1sts0xgz"/);
+  assert.match(html, /href="https:\/\/luma\.com\/calendar\/cal-Hn5j7FxO7A7Ensp"/);
+  assert.ok(html.includes('src="/applied-ai-in-practice-ap-monogram.png"'));
+  assert.doesNotMatch(html, /luma\.com\/gzrgw7b0/);
+  const dates = (html.match(/class="series-event"/g) || []);
+  assert.equal(dates.length, 2);
+});
