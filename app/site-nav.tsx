@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- Native anchors avoid vinext's broken Link click interception. */
 
 type SiteNavProps = { label: string; current?: "resume" };
-const links = [["Work", "/#work"], ["About", "/#about"], ["Resume", "/resume"]] as const;
+const links = [["Work", "/#work"], ["Series", "/#series"], ["About", "/#about"], ["Resume", "/resume"]] as const;
 
 export function SiteNav({ label, current }: SiteNavProps) {
   return <header className="site-header">
