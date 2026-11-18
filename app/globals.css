@@ -237,8 +237,7 @@ img { display:block; max-width:100%; }
 .home-events { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(360px,.95fr); gap:clamp(38px,5vw,82px); align-items:center; padding:84px clamp(28px,7vw,112px); border-bottom:1px solid var(--line); background:var(--cream); }
 .home-events-brand { display:grid; grid-template-columns:150px minmax(0,1fr); gap:clamp(22px,3vw,42px); align-items:center; }
 .home-events-mark { min-height:150px; display:grid; place-items:center; border-right:1px solid var(--line); padding-right:28px; }
-.home-events-mark span { position:relative; padding:10px 16px 24px 0; font:400 78px/.8 Georgia,serif; letter-spacing:-.15em; }
-.home-events-mark span::after { position:absolute; bottom:7px; left:12px; width:42px; height:4px; background:#8760c5; content:""; }
+.home-events-mark img { width:108px; height:auto; }
 .home-events-eyebrow { margin:0 0 18px; color:var(--green); font-size:11px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
 .home-events-brand h2 { margin:0 0 18px; color:var(--green); font:italic 400 clamp(42px,5vw,72px)/.98 Georgia,serif; letter-spacing:-.06em; }
 .home-events-tagline { margin:0 0 18px; font-size:clamp(16px,1.5vw,20px); }
@@ -257,4 +256,4 @@ img { display:block; max-width:100%; }
 .home-events-calendar:hover { background:#0e392a; }
 .home-events-calendar span { font-size:20px; font-weight:400; }
 @media (max-width:900px) { .home-events { grid-template-columns:1fr; gap:38px; }.home-events-list { border-left:0; border-top:1px solid var(--line); padding:28px 0 0; } }
-@media (max-width:560px) { .home-events { padding:58px 22px; }.home-events-brand { grid-template-columns:74px minmax(0,1fr); gap:18px; align-items:start; }.home-events-mark { min-height:95px; padding-right:12px; }.home-events-mark span { font-size:49px; }.home-events-mark span::after { bottom:3px; left:8px; width:29px; height:3px; }.home-events-brand h2 { font-size:clamp(36px,10vw,49px); }.home-events-meta { gap:7px; }.home-events-calendar { width:100%; } }
+@media (max-width:560px) { .home-events { padding:58px 22px; }.home-events-brand { grid-template-columns:74px minmax(0,1fr); gap:18px; align-items:start; }.home-events-mark { min-height:95px; padding-right:12px; }.home-events-mark img { width:64px; }.home-events-brand h2 { font-size:clamp(36px,10vw,49px); }.home-events-meta { gap:7px; }.home-events-calendar { width:100%; } }
