@@ -4,7 +4,7 @@ import "./events.css";
 
 const siteUrl = "https://ajaneeigharo.com";
 const pageUrl = siteUrl + "/events";
-const calendarUrl = "https://lu.ma/applied-ai-in-practice";
+const calendarUrl = "https://luma.com/calendar/cal-Hn5j7FxO7A7Ensp";
 
 const description =
   "Explore Applied AI in Practice, a student-led series of hands-on AI workshops in Boston, founded and led by Ajanee Igharo at UMass Boston.";
