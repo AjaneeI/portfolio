@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "../../arrow-up-right";
 /* eslint-disable @next/next/no-html-link-for-pages -- Native anchors avoid vinext's broken Link click interception. */
 
 import { projectMetadata, ProjectStructuredData } from "../../project-metadata";
@@ -38,7 +39,7 @@ const page = {
 export const metadata = projectMetadata(page);
 
 function Arrow() {
-  return <span aria-hidden="true">↗</span>;
+  return <ArrowUpRight />;
 }
 
 export default function DigitalPortalProductAnalyticsPage() {

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./portfolio-motion.css";
+import "./project-browser.css";
+import "./artwork-reveal.css";
+import { PortfolioMotion } from "./portfolio-motion";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,6 +76,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         {children}
+        <PortfolioMotion />
+        <script src="/portfolio-analytics.js" defer />
       </body>
     </html>
   );

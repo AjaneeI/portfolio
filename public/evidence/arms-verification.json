@@ -1,0 +1,158 @@
+{
+  "document": "ARMS portfolio verification summary",
+  "as_of": "2026-10-28",
+  "source": {
+    "commit": "59016b3a0ff51edda84517611c5653327ab5ba2a",
+    "tree": "8e12115e5c029b81beffd34b0e7c3bcdc5122069",
+    "recovered_source_files": 22,
+    "original_archive_sha256": "d4e88a0b170e445c0dbebfc0a51ef6d7299f07daeaa17e7cdeb50e3f44a36aea",
+    "original_archive_bytes": 196522,
+    "original_manifest_files_verified": 163,
+    "history_note": "This archive is a curated file export; original source code and included raw evidence bytes are unchanged."
+  },
+  "checks": {
+    "fresh_offline_validation": {
+      "date": "2026-10-28",
+      "python": "3.12.14",
+      "git": "2.51.1",
+      "platform": "Linux x86_64",
+      "physical_temporary_directory": true,
+      "tests_passed": 101,
+      "demonstration_scenarios": 11,
+      "native_inspection_exit_code": 0
+    },
+    "synthetic_cases": {
+      "defects": 1,
+      "baseline_passed": 6,
+      "baseline_total": 18,
+      "candidate_passed": 18,
+      "candidate_total": 18
+    }
+  },
+  "review_states": {
+    "historical_original": {
+      "run_id": "df36d9b4-6aff-4964-bbda-b191f8f22aaa",
+      "review_state": "approved",
+      "task_success": true,
+      "scope": "Separate recorded agent review of the exact supervised offline synthetic run; raw receipt preserved."
+    },
+    "fresh_replay": {
+      "run_id": "f0dc749c-e5ee-4373-90c6-653f404b4177",
+      "execution": "completed",
+      "verification": "verified",
+      "review_state": "pending",
+      "task_success": false,
+      "reason": "awaiting_independent_review",
+      "new_model_execution": false,
+      "historical_review_reused": false
+    }
+  },
+  "limits": [
+    "The supplied native JSON proposal is replayed; the workbench does not automatically launch a coding model.",
+    "One synthetic arithmetic defect and 18 finite protected cases do not establish general repository repair capability.",
+    "Candidate Python is interpreted as restricted arithmetic; no OS sandbox or arbitrary-code isolation is claimed.",
+    "No live repository pilot, draft PR, publisher, unattended schedule, publication, merge or deployment is included.",
+    "Generated timestamps use six fractional digits. The unchanged imported-evidence parser accepts up to nine but compares at microsecond precision; submicrosecond reversals may pass. This limits the broader validate-evidence API, not the recorded six-digit quickstart output.",
+    "Cost and human intervention remain unmeasured; null is unknown.",
+    "A historical review does not approve a new replay; the fresh run remains pending review."
+  ],
+  "evidence_files": [
+    {
+      "package_path": "verification/historical-reviewed-run/evidence.json",
+      "origin": "unchanged historical reviewed run: evidence.json",
+      "sha256": "e28b946f2dc2b997532aa1aa9efcbb2db56f27e81e0615a4955b57950f851a4b",
+      "size_bytes": 3432
+    },
+    {
+      "package_path": "verification/historical-reviewed-run/baseline-checks.json",
+      "origin": "unchanged historical reviewed run: baseline-checks.json",
+      "sha256": "c430b7e2c7b20436c8fdf5c709a67e59b8c660edc9b6404bdf6c0f3875cfda61",
+      "size_bytes": 1296
+    },
+    {
+      "package_path": "verification/historical-reviewed-run/candidate-checks.json",
+      "origin": "unchanged historical reviewed run: candidate-checks.json",
+      "sha256": "0c62abec36f07d92c011a70898cfe4ef063f7ef67a1e91dd656065757e1882fa",
+      "size_bytes": 1280
+    },
+    {
+      "package_path": "verification/historical-reviewed-run/repair.patch",
+      "origin": "unchanged historical reviewed run: repair.patch",
+      "sha256": "9c2278a370a8cfb4f5d3421ea581cfe66d3052d0ed86af65feb01ab3fa632393",
+      "size_bytes": 171
+    },
+    {
+      "package_path": "verification/historical-reviewed-run/journal.json",
+      "origin": "unchanged historical reviewed run: journal.json",
+      "sha256": "b0ff562aec673f01facfe72fcffeaeeb6ed3b2db7ba2a93b991bcd62897faf78",
+      "size_bytes": 270
+    },
+    {
+      "package_path": "verification/historical-reviewed-run/source-hashes.json",
+      "origin": "unchanged historical reviewed run: source-hashes.json",
+      "sha256": "21699d0fb252fd2c944aedfa589449af4dd0c034783995bc2feba7c68015e0c0",
+      "size_bytes": 166
+    },
+    {
+      "package_path": "verification/historical-reviewed-run/review-receipt.json",
+      "origin": "unchanged historical reviewed run: review-receipt.json",
+      "sha256": "60193dfec5f7015fbeab1562276ad80d7a8abbb406c9e70f7b6f5e07d31bdc7d",
+      "size_bytes": 1200
+    },
+    {
+      "package_path": "verification/historical-reviewed-run/reviewed-evidence.json",
+      "origin": "unchanged historical reviewed run: reviewed-evidence.json",
+      "sha256": "3a8cccc39ff041f8e0e118fd30815f6c776d4095707d1798a3c4dc0f9aa7e453",
+      "size_bytes": 3573
+    },
+    {
+      "package_path": "verification/fresh-unreviewed-replay/evidence.json",
+      "origin": "unchanged October 28 supplied-proposal replay: evidence.json",
+      "sha256": "e8b5682bc0930f0bf52450fc3c69abde15899df138ad4a8d279a54cf28a5e8b3",
+      "size_bytes": 3432
+    },
+    {
+      "package_path": "verification/fresh-unreviewed-replay/baseline-checks.json",
+      "origin": "unchanged October 28 supplied-proposal replay: baseline-checks.json",
+      "sha256": "c430b7e2c7b20436c8fdf5c709a67e59b8c660edc9b6404bdf6c0f3875cfda61",
+      "size_bytes": 1296
+    },
+    {
+      "package_path": "verification/fresh-unreviewed-replay/candidate-checks.json",
+      "origin": "unchanged October 28 supplied-proposal replay: candidate-checks.json",
+      "sha256": "0c62abec36f07d92c011a70898cfe4ef063f7ef67a1e91dd656065757e1882fa",
+      "size_bytes": 1280
+    },
+    {
+      "package_path": "verification/fresh-unreviewed-replay/repair.patch",
+      "origin": "unchanged October 28 supplied-proposal replay: repair.patch",
+      "sha256": "9c2278a370a8cfb4f5d3421ea581cfe66d3052d0ed86af65feb01ab3fa632393",
+      "size_bytes": 171
+    },
+    {
+      "package_path": "verification/fresh-unreviewed-replay/journal.json",
+      "origin": "unchanged October 28 supplied-proposal replay: journal.json",
+      "sha256": "b0ff562aec673f01facfe72fcffeaeeb6ed3b2db7ba2a93b991bcd62897faf78",
+      "size_bytes": 270
+    },
+    {
+      "package_path": "verification/fresh-unreviewed-replay/source-hashes.json",
+      "origin": "unchanged October 28 supplied-proposal replay: source-hashes.json",
+      "sha256": "21699d0fb252fd2c944aedfa589449af4dd0c034783995bc2feba7c68015e0c0",
+      "size_bytes": 166
+    },
+    {
+      "package_path": "verification/tests.stderr.log",
+      "origin": "unchanged October 28 fresh offline validation: tests.stderr.log",
+      "sha256": "8b496de024cab1d559bffe161d5f5d37ff98e42061696f2be251faf8dc947807",
+      "size_bytes": 14443
+    },
+    {
+      "package_path": "verification/demo.stdout.log",
+      "origin": "unchanged October 28 fresh offline validation: demo.stdout.log",
+      "sha256": "8e9bed78fb3d7adb1c3ac843a3bb92c54851bb02e5e25bf7a2acef12e80c9e8c",
+      "size_bytes": 2948
+    }
+  ],
+  "project_stage": "supervised_offline_prototype"
+}

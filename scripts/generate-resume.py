@@ -96,7 +96,7 @@ def build(source, destination):
     destination = Path(destination)
     destination.parent.mkdir(parents=True, exist_ok=True)
     doc = SimpleDocTemplate(str(destination), pagesize=letter, leftMargin=18, rightMargin=18, topMargin=12, bottomMargin=12,
-                            title='Ajanee Igharo Resume', author='Ajanee Igharo', subject='Portfolio resume revision 2026-10-05')
+                            title='Ajanee Igharo Resume', author='Ajanee Igharo', subject='Portfolio resume revision 2026-10-28')
     def page_footer(canvas, document):
         canvas._doc.Catalog.Lang = PDFString('en-US')
     doc.build(story, onFirstPage=page_footer, onLaterPages=page_footer)

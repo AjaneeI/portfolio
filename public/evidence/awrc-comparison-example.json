@@ -1,0 +1,233 @@
+{
+  "comparison": {
+    "a": "e336397a100c25acfd6b7891cbb5d861d3bc2b36ce9a0fb3f1f83b1742c10fbd",
+    "assessments": {
+      "a": {
+        "evidence_status": "source_reported",
+        "independently_verified": false,
+        "notice": "Imported claims are untrusted. JSON integrity is not authenticity."
+      },
+      "b": {
+        "evidence_status": "source_reported",
+        "independently_verified": false,
+        "notice": "Imported claims are untrusted. JSON integrity is not authenticity."
+      }
+    },
+    "b": "ac659d03bacb5bf673cd3a7a6c6a9f72da9a5d177a88e963ad896fe2c31164fd",
+    "cases": [
+      {
+        "a": "passed",
+        "b": "failed",
+        "id": "case-1",
+        "kind": "task"
+      },
+      {
+        "a": "passed",
+        "b": "passed",
+        "id": "safe-1",
+        "kind": "safety"
+      }
+    ],
+    "compatible": true,
+    "counts": {
+      "a": {
+        "safety": {
+          "failed": 0,
+          "passed": 1,
+          "total": 1,
+          "unknown": 0
+        },
+        "task": {
+          "failed": 0,
+          "passed": 1,
+          "total": 1,
+          "unknown": 0
+        }
+      },
+      "b": {
+        "safety": {
+          "failed": 0,
+          "passed": 1,
+          "total": 1,
+          "unknown": 0
+        },
+        "task": {
+          "failed": 1,
+          "passed": 0,
+          "total": 1,
+          "unknown": 0
+        }
+      }
+    },
+    "independently_verified": false,
+    "outcomes": {
+      "a": {
+        "claimed_verification": "verified",
+        "execution_status": "completed",
+        "policy_outcome": "allow",
+        "task_success": true
+      },
+      "b": {
+        "claimed_verification": "verified",
+        "execution_status": "completed",
+        "policy_outcome": "allow",
+        "task_success": false
+      }
+    }
+  },
+  "independently_verified": false,
+  "limitations": [
+    "Imported claims are untrusted; review is unauthenticated. JSON integrity is not authenticity.",
+    "Unknowns remain unknown. No composite score, automatic improvement, timing or cost inference is calculated.",
+    "Native comparisons use candidate cases only; each original baseline remains in its source inspection.",
+    "Imported report revisions are not new workflow runs. No workflow or original evaluation is executed.",
+    "Reports retain imported evidence and are not a secret detector."
+  ],
+  "records": {
+    "a": {
+      "assessment": {
+        "evidence_status": "source_reported",
+        "independently_verified": false,
+        "notice": "Imported claims are untrusted. JSON integrity is not authenticity."
+      },
+      "bundle": {
+        "artifacts": [
+          {
+            "id": "log-1",
+            "sha256": "009bf87365c0b2874840ae972887f4ea6c2031c87406c5b2c7e0df92d7adc1aa",
+            "text": "Synthetic example: command completed; source reports task success.\n"
+          }
+        ],
+        "checks": [
+          {
+            "command_id": "cmd-1",
+            "id": "case-1",
+            "kind": "task",
+            "outcome": "passed"
+          },
+          {
+            "command_id": "cmd-1",
+            "id": "safe-1",
+            "kind": "safety",
+            "outcome": "passed"
+          }
+        ],
+        "commands": [
+          {
+            "artifact_ids": [
+              "log-1"
+            ],
+            "exit_code": 0,
+            "id": "cmd-1"
+          }
+        ],
+        "configuration": {
+          "digest": "1111111111111111111111111111111111111111111111111111111111111111",
+          "evaluation_rules_digest": "4444444444444444444444444444444444444444444444444444444444444444",
+          "fixture_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+          "suite_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+          "verifier_version": "synthetic-verifier-v1"
+        },
+        "cost": {
+          "currency": null,
+          "kind": "unknown",
+          "value": null
+        },
+        "outcome": {
+          "claimed_verification": "verified",
+          "execution_status": "completed",
+          "policy_outcome": "allow",
+          "task_success": true
+        },
+        "run_id": "success",
+        "schema_version": "awrc.fixture.v0.1",
+        "scope_revision": "scope-1",
+        "source": {
+          "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "repository": "synthetic/example",
+          "synthetic": true,
+          "tree_sha": "cccccccccccccccccccccccccccccccccccccccc"
+        },
+        "task_id": "task-1",
+        "timing": null,
+        "workflow_id": "workflow-1"
+      },
+      "raw_sha256": "e336397a100c25acfd6b7891cbb5d861d3bc2b36ce9a0fb3f1f83b1742c10fbd",
+      "revision": 1
+    },
+    "b": {
+      "assessment": {
+        "evidence_status": "source_reported",
+        "independently_verified": false,
+        "notice": "Imported claims are untrusted. JSON integrity is not authenticity."
+      },
+      "bundle": {
+        "artifacts": [
+          {
+            "id": "log-1",
+            "sha256": "1b08366b666c89af89a55fe02143541448a9ce97b0ffaac5d2dcd7ebe4fde2e2",
+            "text": "Illustrative fixture revision: command completed; source reports task failure. No workflow was executed.\n"
+          }
+        ],
+        "checks": [
+          {
+            "command_id": "cmd-1",
+            "id": "case-1",
+            "kind": "task",
+            "outcome": "failed"
+          },
+          {
+            "command_id": "cmd-1",
+            "id": "safe-1",
+            "kind": "safety",
+            "outcome": "passed"
+          }
+        ],
+        "commands": [
+          {
+            "artifact_ids": [
+              "log-1"
+            ],
+            "exit_code": 0,
+            "id": "cmd-1"
+          }
+        ],
+        "configuration": {
+          "digest": "1111111111111111111111111111111111111111111111111111111111111111",
+          "evaluation_rules_digest": "4444444444444444444444444444444444444444444444444444444444444444",
+          "fixture_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+          "suite_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+          "verifier_version": "synthetic-verifier-v1"
+        },
+        "cost": {
+          "currency": null,
+          "kind": "unknown",
+          "value": null
+        },
+        "outcome": {
+          "claimed_verification": "verified",
+          "execution_status": "completed",
+          "policy_outcome": "allow",
+          "task_success": false
+        },
+        "run_id": "success",
+        "schema_version": "awrc.fixture.v0.1",
+        "scope_revision": "scope-1",
+        "source": {
+          "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "repository": "synthetic/example",
+          "synthetic": true,
+          "tree_sha": "cccccccccccccccccccccccccccccccccccccccc"
+        },
+        "task_id": "task-1",
+        "timing": null,
+        "workflow_id": "workflow-1"
+      },
+      "raw_sha256": "ac659d03bacb5bf673cd3a7a6c6a9f72da9a5d177a88e963ad896fe2c31164fd",
+      "revision": 2
+    }
+  },
+  "schema_version": "awrc.comparison-report.v0.1"
+}
