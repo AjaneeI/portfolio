@@ -1,21 +1,17 @@
-# Resume PDF maintenance
+# Downloadable resume maintenance
 
-The factual source is `app/resume/page.tsx`. The generator consumes its built HTML, not a second copy of the resume.
+The downloadable PDF is the curated one-page Applied AI Engineering application resume, revised with explicit owner approval on October 28, 2026. The website retains the fuller portfolio and editorial layout.
 
-Use Node as specified in package.json and Python with reportlab, lxml and pypdf installed. From the repository root:
+Generate with:
 
 ```sh
-npm run build
-node scripts/export-resume.mjs /tmp/resume.html
-python3 scripts/generate-resume.py /tmp/resume.html public/Ajanee_Igharo_Applied_AI_Engineer_Resume.pdf
-python3 scripts/verify-resume.py /tmp/resume.html public/Ajanee_Igharo_Applied_AI_Engineer_Resume.pdf
-npm run typecheck
-npm run lint
-npm test
+python scripts/generate-applied-ai-resume.py
 ```
 
-Render and inspect both PDF pages after every regeneration. Verify clipping, wrapping, contrast and balanced page breaks. The verifier checks text, links, page count and stale copy; it does not replace visual inspection or certify PDF accessibility. Keep the public filename stable. After release download from the actual domain and compare SHA-256 with the generated file.
+This curated generator replaces the older one-page HTML-to-PDF export workflow. Do not run `generate-resume.py` against the redesigned page: its selectors and old one-page layout are no longer the current downloadable format.
 
-The current PDF uses a conventional, ATS-readable one-page layout derived from Ajanee's retained one-page resume template: a centered header, compact section rules, one-column flow, 8.5pt body text and 9.5pt leading. The website body copy remains 17px with a 1.68 line height.
+Factual references: owner-confirmed EOED October-December 2024, Girls' LEAP financial internship January-March 2026, MBA expected May 2027; LinkedIn/Notion employment and project review in the October 28 resume thread. Keep public web and PDF claims reconciled when changing factual copy. The generator contains deliberately curated copy, so website wording changes do not automatically propagate.
 
-Release review: no Critical or Important findings. Deferred minor: existing browser-print CSS targets `.resume-site-nav`, while shared navigation renders `.site-header`; direct browser printing can include navigation. The canonical downloadable PDF excludes navigation. Shared navigation was intentionally not changed in this scoped release.
+The current PDF selects Agentic Analytics Lab and AWRC to demonstrate engineering and evaluation. Gateway, ARMS, speaking and recognition remain on the website. Role ownership, agent assistance, synthetic/local boundaries,  are retained. No quantitative business impact is invented. The download is a single-column application resume without tables, graphics, text boxes or image-based text.
+
+QA: exactly 1 Letter page, 10.5pt body with 13pt leading, all extracted text black, stable download filename, dates checked, 6 active links, text within page margins. The rendered page inspected without clipping or overlaps. Text extraction checked; this does not certify accessibility or guarantee a particular ATS score.

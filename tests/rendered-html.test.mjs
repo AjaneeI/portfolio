@@ -11,7 +11,7 @@ async function response(path) {
 }
 test('homepage has the new identity, selected work, and functional routes', async () => {
   const html = await page('/');
-  for (const expected of ['Applied AI Engineer', 'systems for', 'real-world', 'Agentic Analytics Lab', 'Agent Systems Evidence Scout', 'HomeOps Agent', 'Closing the Loop', 'I care about what happens after the demo', '/resume', '/work/agentic-analytics-lab', '/work/agent-systems-evidence-scout', '/work/homeops-agent', 'mailto:ajaneeigharo@gmail.com']) assert.ok(html.includes(expected), expected);
+  for (const expected of ['Applied AI Engineer', 'systems for', 'real-world', 'Agentic Analytics Lab', 'Enterprise Knowledge Validation MCP', 'AI Workflow Reliability Console', 'Autonomous Repository Maintenance System', 'Closing the Loop', 'I care about what happens after the demo', '/resume', '/work/agentic-analytics-lab', '/work/ai-workflow-reliability-console', '/work/autonomous-repository-maintenance-system', 'mailto:ajaneeigharo@gmail.com']) assert.ok(html.includes(expected), expected);
   for (const stale of ['Human-centered AI · Product analytics · Strategy', 'Artifact in development', 'being prepared for review', 'Product Analyst', 'Strategy Analyst']) assert.ok(!html.includes(stale), stale);
   assert.ok(html.includes('Ajanee Igharo | Applied AI Engineer'));
   assert.equal((html.match(/<h1/g) || []).length, 1);
@@ -22,7 +22,7 @@ test('project and resume routes render with honest status', async () => {
   assert.match(agentic, /oracle_metadata_routed_v0/);
   assert.match(agentic, /does not evaluate natural-language route inference/);
   assert.match(agentic, /Q3 and Q5 failed consistently/);
-  assert.match(agentic, /146 passing tests/);
+  assert.match(agentic, /289 tests/);
   assert.doesNotMatch(agentic, /architecture is planned|has not been implemented|remains future work/);
   assert.match(await page('/work/homeops-agent'), /simulated for reproducible testing/);
   assert.match(await page('/work/agent-systems-evidence-scout'), /39 deterministic tests/);
@@ -30,14 +30,17 @@ test('project and resume routes render with honest status', async () => {
   assert.match(await page('/resume'), /Expected May 2027/);
 });
 
-test('Gateway is fourth, credits the team, and discloses fixture and live-verification limits', async () => {
+test('Gateway stays last, credits the team, and discloses fixture and live-verification limits', async () => {
   const html = await page('/');
-  const entries = [...html.matchAll(/<article class="project">([\s\S]*?)<\/article>/g)].map(match => match[1]);
-  assert.equal(entries.length, 4);
-  assert.deepEqual(entries.map(entry => entry.match(/<p class="project-name">([^<]+)<\/p>/)[1]), [
-    'Agentic Analytics Lab', 'Agent Systems Evidence Scout', 'HomeOps Agent', 'Glasswing Gateway',
+  const entries = [...html.matchAll(/<article\b(?=[^>]*class="work-panel")[^>]*>([\s\S]*?)<\/article>/g)].map(match => match[1]);
+  assert.equal(entries.length, 5);
+  assert.doesNotMatch(html, /reliability-studies-title|work-tab-copy">Evidence Scout|work-tab-copy">HomeOps Agent/);
+  assert.ok(entries[2].includes('/work/ai-workflow-reliability-console'));
+  assert.ok(entries[3].includes('/work/autonomous-repository-maintenance-system'));
+  assert.deepEqual(entries.map(entry => entry.match(/<h3>([^<]+)<\/h3>/)[1]), [
+    'Agentic Analytics Lab', 'Enterprise Knowledge Validation MCP', 'AI Workflow Reliability Console', 'Autonomous Repository Maintenance System', 'Glasswing Gateway',
   ]);
-  const gateway = entries[3];
+  const gateway = entries[4];
   assert.match(gateway, /Collaborative Full-Stack \/ Applied AI Engineering/);
   assert.match(gateway, /Team implementation/);
   assert.doesNotMatch(gateway, /What I built|Read case study|live demo/i);
@@ -46,7 +49,7 @@ test('Gateway is fourth, credits the team, and discloses fixture and live-verifi
   }
   assert.match(gateway, /href="https:\/\/github.com\/AjaneeI\/glasswing-gateway"/);
   assert.match(gateway, /href="https:\/\/github.com\/AjaneeI\/glasswing-gateway\/blob\/main\/docs\/contributions.md"/);
-  assert.ok(html.indexOf('supporting-work') > html.indexOf('Glasswing Gateway'));
+  assert.ok(html.indexOf('work-browser-footer') > html.indexOf('Glasswing Gateway'));
   assert.match(html, /href="\/work\/closing-the-loop"/);
 });
 
@@ -56,16 +59,17 @@ test('project pages publish self-contained article metadata', async () => {
       path: '/work/agentic-analytics-lab',
       title: 'Agentic Analytics Lab | Ajanee Igharo',
       description: 'Evaluation-driven analytics-agent lab testing when specialized execution is worth added complexity, with ClickHouse, guardrails, CI, and failure analysis.',
-      modified: '2026-10-05',
+      modified: '2026-10-28',
     },
     {
       path: '/work/agent-systems-evidence-scout',
       title: 'Agent Systems Evidence Scout | Ajanee Igharo',
-      description: 'Evidence-controlled arXiv research agent with bounded tools, per-run verification, deterministic citation guardrails, regression tests, and live integration evidence.',
-      modified: '2026-10-05',
+      description: 'An arXiv research agent with bounded tools, citation checks, regression tests, and documented integration evidence.',
+      modified: '2026-10-28',
     },
     {
       path: '/work/homeops-agent',
+      modified: '2026-10-28',
       title: 'HomeOps Agent | Ajanee Igharo',
       description: 'Human-in-the-loop AI prototype with explicit tool contracts, approval gates, simulated devices, failure handling, and audit logging.',
     },
@@ -113,28 +117,20 @@ test('project pages publish self-contained article metadata', async () => {
 test('resume is recruiter-scannable and exposes the existing PDF download', async () => {
   const html = await page('/resume');
   const description = 'Ajanee Igharo is an MBA candidate building and evaluating reliable agent systems and implementing applied AI programs for real organizational workflows.';
-  assert.ok(html.includes('<title>Ajanee Igharo | Resume</title>'));
+  assert.ok(html.includes('<title>Applied AI Engineer Resume | Ajanee Igharo</title>'));
   assert.ok(html.includes(`<meta name="description" content="${description}"`));
   assert.ok(html.includes(`<meta property="og:description" content="${description}"`));
   assert.ok(html.includes(`<meta name="twitter:description" content="${description}"`));
   assert.ok(html.includes('<link rel="canonical" href="https://ajaneeigharo.com/resume"'));
-  const sectionOrder = [
-    'Education',
-    'Experience',
-    'Selected Projects',
-    'Technical Skills',
-    'Writing &amp; Speaking',
-    'Leadership &amp; Recognition',
-  ];
-  let position = -1;
-  for (const section of sectionOrder) {
-    const next = html.indexOf(section);
-    assert.ok(next > position, section);
-    position = next;
+  const sectionOrder = [...html.matchAll(/<section[^>]*aria-labelledby="([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(sectionOrder, ['experience', 'projects', 'education', 'skills', 'publications', 'leadership']);
+  for (const id of sectionOrder) {
+    assert.ok(html.includes(`href="#${id}"`), `resume section navigation: ${id}`);
+    assert.match(html, new RegExp(`<h2 id="${id}">`));
   }
   for (const exactClaim of [
     'AI Programs &amp; Operations Coordinator',
-    'Summer 2026 AI workshop series serving 30+ career advisors',
+    'Led Summer 2026 AI workshop operations for career advisors',
     'Small Business Development Intern',
     'Financial Consulting &amp; Analytics Intern',
     'Nov 2025',
@@ -148,27 +144,38 @@ test('resume is recruiter-scannable and exposes the existing PDF download', asyn
     'AI Industry Applications Lab',
   ]) assert.ok(html.includes(exactClaim), exactClaim);
   for (const staleClaim of ['Community Outreach Chair', 'Founder and Member', 'Applied AI Engineer</p>', 'Focused On', 'View full experience', 'Last updated', 'Closing the Loop', 'Agent Systems Evidence Scout', 'second place', 'Excellence in Team Collaboration', 'MBA in Data Analytics', 'Computer Science minor', 'Accelerated Master', 'Dates pending verification', 'Exact dates', 'Agents for Humans Hackathon', 'TypeScript (project-based)', 'Work / Knowledge Systems']) assert.ok(!html.includes(staleClaim), staleClaim);
-  assert.match(html, /href="\/Ajanee_Igharo_Applied_AI_Engineer_Resume\.pdf"[^>]*download/);
-  assert.match(html, />Download Resume PDF</);
-  assert.match(html, /href="\/#work"[^>]*>View all projects</);
+  assert.match(html, /href="\/Ajanee_Igharo_Applied_AI_Engineer_Resume\.pdf(?:\?[^"]*)?"[^>]*download/);
+  assert.match(html, />Download Resume PDF(?:\s|<)/);
+  assert.match(html, /href="\/#work"[^>]*>Work<\/a>/);
 });
 
 test('resume release preserves authoritative roles, chronology and project boundaries', async () => {
   const html = await page('/resume');
-  const experience = html.match(/aria-labelledby="experience"[\s\S]*?<\/section>/)[0];
-  const entries = [...experience.matchAll(/<article class="resume-entry">([\s\S]*?)<\/article>/g)].map(x => x[1]);
+  const experience = html.match(/aria-labelledby="experience"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(experience, 'resume experience section exists');
+  const entries = [...experience.matchAll(/<article class="resume-entry"[^>]*>([\s\S]*?)<\/article>/g)].map(x => x[1]);
+  assert.equal(entries.length, 4);
+  assert.deepEqual(entries.map(entry => entry.match(/<h3>(.*?)<\/h3>/)?.[1]), [
+    'AI Programs &amp; Operations Coordinator',
+    'Small Business Development Intern',
+    'Venture Capital Extern',
+    'Financial Consulting &amp; Analytics Intern',
+  ]);
+  assert.deepEqual(entries.map(entry => entry.match(/<time>(.*?)<\/time>/)?.[1]), [
+    'Nov 2025 to Nov 2026', 'Oct 2024 to Dec 2024', 'Sep 2024 to Oct 2024', 'Jan 2026 to Mar 2026',
+  ]);
   assert.equal((entries[0].match(/<li>/g) || []).length, 3);
-  assert.match(entries[0], /AI Programs &amp; Operations Coordinator/);
-  assert.match(entries[0], /30\+ career advisors/);
+  assert.doesNotMatch(html, /30\+ career advisors/);
   assert.match(entries[0], /Rebaz Kamal/);
-  assert.match(entries[0], /plain Python, OpenRouter, and Google Colab/);
-  assert.match(entries.find(x => x.includes('Small Business Development Intern')), /Summer 2025/);
-  assert.match(entries.find(x => x.includes('Financial Consulting')), /Nov 2025/);
+  assert.match(entries[0], /including Python, OpenRouter, and Google Colab agent exercises/);
+  for (const role of ['Project Manager | May 2022 to Mar 2026', 'Board Member | Sep 2021 to Sep 2022', 'Lead Mentor | May 2018 to Apr 2022']) {
+    assert.ok(experience.includes(role), role);
+  }
   assert.match(html, /Programming &amp; Web/);
   assert.match(html, /Python, SQL, TypeScript, HTML\/CSS, React, Next.js/);
   const projects = html.match(/aria-labelledby="projects"[\s\S]*?<\/section>/)[0];
   const titles = [...projects.matchAll(/<h3><a[^>]*>(.*?)<\/a><\/h3>/g)].map(x => x[1]);
-  assert.deepEqual(titles, ['Agentic Analytics Lab', 'Gateway: Agentic Commerce Assurance', 'HomeOps Agent']);
+  assert.deepEqual(titles, ['Agentic Analytics Lab', 'AI Workflow Reliability Console (AWRC)', 'Autonomous Repository Maintenance System (ARMS)', 'Gateway: Agentic Commerce Assurance']);
   assert.match(projects, /Team hackathon prototype/);
   assert.match(projects, /separate, unmerged pull request/);
   assert.match(projects, /synthetic data/);
@@ -200,7 +207,7 @@ test('authored pages contain no em dashes', async () => {
 
 test('homepage and crawl files expose production discovery signals', async () => {
   const html = await page('/');
-  for (const expected of ['rel="canonical" href="https://ajaneeigharo.com"', 'property="og:image" content="https://ajaneeigharo.com/og.png"', 'rel="manifest" href="/manifest.webmanifest"', '"@type":"WebSite"', '"jobTitle":"Applied AI Engineer"']) assert.ok(html.includes(expected), expected);
+  for (const expected of ['rel="canonical" href="https://ajaneeigharo.com"', 'property="og:image" content="https://ajaneeigharo.com/og.png"', 'rel="manifest" href="/manifest.webmanifest"', '"@type":"WebSite"', '"jobTitle":"AI Programs & Operations Coordinator"']) assert.ok(html.includes(expected), expected);
   const robots = await response('/robots.txt');
   assert.equal(robots.status, 200);
   assert.match(await robots.text(), /Sitemap: https:\/\/ajaneeigharo\.com\/sitemap\.xml/);
@@ -226,3 +233,74 @@ test('Closing the Loop has one canonical route and stale route redirects permane
   assert.equal(stale.status, 308);
   assert.equal(stale.headers.get('location'), 'http://localhost/work/closing-the-loop');
 });
+
+
+test('MCP portfolio entry preserves read-only and synthetic-evidence boundaries', async () => {
+  const html = await page('/work/enterprise-knowledge-validation-mcp');
+  for (const expected of ['check_procedure_status', 'assess_action_readiness', '106 tests', '36', 'execution_authorized=false', 'synthetic', 'October 16, 2026', 'No live Glean']) assert.ok(html.includes(expected), expected);
+  const home = await page('/');
+  assert.match(home, /href="\/work\/enterprise-knowledge-validation-mcp"/);
+  const tabs = [...home.matchAll(/<button\b(?=[^>]*role="tab")[^>]*>/g)].map(match => match[0]);
+  assert.equal(tabs.length, 5);
+  assert.equal(tabs.filter(tab => tab.includes('aria-selected="true"')).length, 1);
+  assert.equal(tabs.filter(tab => tab.includes('tabindex="0"')).length, 1);
+  assert.match(html, /https:\/\/github.com\/AjaneeI\/enterprise-knowledge-validation-mcp/);
+});
+
+test('independent series preserves its place, credit, artwork and public calendar', async () => {
+  const html = await page('/');
+  const series = html.match(/<section class="series-showcase"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(series, 'series section exists');
+  for (const text of ['Applied AI in Practice', 'Founded &amp; led by Ajanee Igharo', 'Hands-on learning. Industry connections. Practical AI.']) {
+    assert.ok(series.includes(text), text);
+  }
+  assert.ok(html.indexOf('id="series"') > html.indexOf('id="hero-title"'));
+  assert.ok(html.indexOf('id="series"') < html.indexOf('id="work"'));
+  assert.match(series, /src="\/applied-ai-in-practice-ap-monogram\.png"/);
+  assert.doesNotMatch(series, /UMass|University|PEAAII|sponsor|waitlist/i);
+  const links = [...series.matchAll(/href="([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(links, ['https://luma.com/1sts0xgz', 'https://luma.com/gzrgw7b0', '/events']);
+});
+
+test('workshops publish the approved programs and link both approved registration pages', async () => {
+  const html = await page('/');
+  const sessions = [...html.matchAll(/<article class="series-event"[^>]*>([\s\S]*?)<\/article>/g)].map(match => match[1]);
+  assert.equal(sessions.length, 2);
+  assert.match(sessions[0], /GTM Engineering: Discover an emerging career at the intersection of AI, business, marketing, and technology\./);
+  assert.match(sessions[0], /Amrutha “Amu” Killada/);
+  assert.match(sessions[0], /datetime="2026-12-03"/i);
+  assert.match(sessions[0], /Thu[^<]*Dec 3, 2026/);
+  assert.match(sessions[0], /3:30–4:45 PM ET/);
+  assert.match(sessions[0], /href="https:\/\/luma\.com\/1sts0xgz"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
+  assert.match(sessions[1], /Becoming AI-First: Context Capture &amp; Starting with the Why/);
+  assert.match(sessions[1], /Alex Turgeon and Logan Reilly/);
+  assert.match(sessions[1], /datetime="2026-12-11"/i);
+  assert.match(sessions[1], /Fri[^<]*Dec 11, 2026/);
+  assert.match(sessions[1], /12–1:30 PM ET/);
+  assert.match(sessions[1], /href="https:\/\/luma\.com\/gzrgw7b0"/);
+  assert.doesNotMatch(html, /Registration coming soon/);
+});
+
+
+test('public homepage preserves monochrome SVG arrows in hero and shared navigation', async () => {
+  const html = await page('/');
+  assert.doesNotMatch(html, /\u2197|&#(?:8599|x2197);/i);
+  const hero = html.match(/<div class="hero-actions">([\s\S]*?)<\/section>/)?.[1];
+  assert.ok(hero);
+  assert.equal((hero.match(/<svg\b/g) || []).length, 3);
+  assert.equal((hero.match(/stroke="currentColor"/g) || []).length, 3);
+  for (const href of ['#work', 'https://github.com/AjaneeI', '/resume']) {
+    assert.ok(hero.includes(`href="${href}"`), href);
+  }
+  const nav = html.match(/<nav[^>]*>([\s\S]*?)<\/nav>/)?.[1];
+  assert.ok(nav.includes('href="/events"'));
+  assert.match(nav, /<svg[^>]*class="arrow-up-right"/);
+});
+
+ test('events page publishes workshops, discovery metadata, and registration', async () => {
+ const html = await page('/events');
+ assert.equal((html.match(/<h1/g)||[]).length, 1);
+ for (const text of ['https://luma.com/1sts0xgz','https://luma.com/gzrgw7b0','CollectionPage','ItemList','BreadcrumbList','Applied AI in Practice live calendar','Common questions']) assert.ok(html.includes(text),text);
+ assert.match(html, /rel="canonical" href="https:\/\/ajaneeigharo.com\/events"/);
+ assert.ok((await (await response('/sitemap.xml')).text()).includes('https://ajaneeigharo.com/events'));
+ });

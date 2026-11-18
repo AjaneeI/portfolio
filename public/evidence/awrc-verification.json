@@ -1,0 +1,83 @@
+{
+  "document": "AWRC portfolio verification summary",
+  "as_of": "2026-10-28",
+  "source": {
+    "local_candidate_commit": "4ae1419fa0a3ce145fa4065b50dbcb9fd04528e1",
+    "implementation_commit": "4c4d617eee2b86e0fafe43fd169684f582a4dc82",
+    "remote_intake_commit": "598f9c5fc63954fad26147ea6f5ba44d0243a5ed",
+    "history_note": "The local snapshot has its own Git history; this archive is a curated file export, not a Git repository."
+  },
+  "checks": {
+    "builder_python": {
+      "date": "2026-10-28",
+      "methods": 87,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "real_loopback_http_methods": 14,
+      "historical_conformance_vectors": 44,
+      "python": "3.12.14",
+      "platform": "Linux x86_64",
+      "qualification": "Test-only relocation of macOS-specific /private/tmp requests into an owned physical Linux directory. Production functions, sockets and assertions unchanged."
+    },
+    "client": {
+      "regression_files": 3,
+      "passed_files": 3,
+      "timing": "Before parser edit; client code and tests remained unchanged."
+    },
+    "separate_review": {
+      "candidate_commit": "4ae1419fa0a3ce145fa4065b50dbcb9fd04528e1",
+      "decision": "approved for bounded local consumer chronology repair",
+      "blocking_findings": 0,
+      "focused_methods": 7,
+      "independent_public_parser_probes": 40,
+      "full_suite_independently_rerun": false
+    },
+    "preservation": {
+      "native_golden_files_unchanged": 8,
+      "historical_vector_recipes_and_labels_unchanged": 44,
+      "historical_producer_receipt_unchanged": true,
+      "producer_code_changed": false
+    }
+  },
+  "limits": [
+    "This is a local data-only evidence console, not a hosted autonomous service.",
+    "Imported review aliases, timestamps and success claims are not independently authenticated.",
+    "The recorded verification did not include a new browser acceptance run, model call, real repository pilot, or hosted deployment.",
+    "Exact timestamp ordering establishes internal consistency, not event authenticity, interval containment or general EV conformance.",
+    "The 87-method result is builder evidence; the separate reviewer ran seven focused methods and 40 additional probes."
+  ],
+  "evidence_files": [
+    {
+      "package_path": "verification/full-python-compatible.log",
+      "origin": "unchanged October 28 builder verification: full-python-compatible.log",
+      "sha256": "f15ddce99ba7b74f54bb3363d61d77c0b5af405baa22371ca12ba4735191e0d9",
+      "size_bytes": 13451
+    },
+    {
+      "package_path": "verification/full-python-compatible.json",
+      "origin": "unchanged October 28 builder verification: full-python-compatible.json",
+      "sha256": "86be9f3cfd0aaf92f2ed9ecdc733d6ea24efd96d23670a8411a4c3977a1743c8",
+      "size_bytes": 352
+    },
+    {
+      "package_path": "verification/chronology-green.log",
+      "origin": "unchanged October 28 builder verification: chronology-green.log",
+      "sha256": "64126baa7570cbd0386c3cbfd447707f1f2e138a411c0d757260dd9c055ff24c",
+      "size_bytes": 1316
+    },
+    {
+      "package_path": "verification/baseline-node.log",
+      "origin": "unchanged October 28 builder verification: baseline-node.log",
+      "sha256": "729a22462c28f715b3fb5b5ed04a19af527fa5b4514b4625446eaab9a06fd7f1",
+      "size_bytes": 251
+    },
+    {
+      "package_path": "verification/independent-focused-tests.log",
+      "origin": "unchanged October 28 separate-review test output",
+      "sha256": "267377f9be839f39fc80a2ee2dbe612a18acfc37625144cedd84ede8d23dc6d8",
+      "size_bytes": 1317
+    }
+  ],
+  "project_stage": "local_application"
+}

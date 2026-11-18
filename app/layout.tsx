@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./portfolio-motion.css";
+import "./project-browser.css";
+import "./artwork-reveal.css";
+import { PortfolioMotion } from "./portfolio-motion";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const structuredData = { "@context":"https://schema.org", "@graph":[
-    { "@type":"Person", "@id":`${siteUrl}/#person`, name:"Ajanee Igharo", jobTitle:"Applied AI Engineer", url:siteUrl, email:"mailto:ajaneeigharo@gmail.com", address:{ "@type":"PostalAddress", addressLocality:"Boston", addressRegion:"MA", addressCountry:"US" }, alumniOf:{ "@type":"CollegeOrUniversity", name:"University of Massachusetts Boston" }, sameAs:["https://www.linkedin.com/in/ajaneeigharo/","https://github.com/AjaneeI","https://x.com/AjaneeIgharo"], knowsAbout:["Applied AI engineering","AI agents","Evaluation","Workflow automation","Human-in-the-loop systems"] },
+    { "@type":"Person", "@id":`${siteUrl}/#person`, name:"Ajanee Igharo", jobTitle:"AI Programs & Operations Coordinator", url:siteUrl, email:"mailto:ajaneeigharo@gmail.com", address:{ "@type":"PostalAddress", addressLocality:"Boston", addressRegion:"MA", addressCountry:"US" }, alumniOf:{ "@type":"CollegeOrUniversity", name:"University of Massachusetts Boston" }, sameAs:["https://www.linkedin.com/in/ajaneeigharo/","https://github.com/AjaneeI","https://x.com/AjaneeIgharo"], knowsAbout:["Applied AI engineering","AI agents","Evaluation","Workflow automation","Human-in-the-loop systems"] },
     { "@type":"WebSite", "@id":`${siteUrl}/#website`, url:siteUrl, name:"Ajanee Igharo | Applied AI Engineer", inLanguage:"en-US", publisher:{ "@id":`${siteUrl}/#person` } }
   ] };
 
@@ -72,6 +76,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         {children}
+        <PortfolioMotion />
       </body>
     </html>
   );

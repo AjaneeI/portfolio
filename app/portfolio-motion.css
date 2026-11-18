@@ -1,0 +1,21 @@
+:root { --motion-ease:cubic-bezier(.22,1,.36,1); }
+.motion-on a .arrow-up-right { transition:transform 380ms var(--motion-ease); }
+@media (hover:hover) { .motion-on a:hover .arrow-up-right { transform:translate(3px,-3px); } }
+.motion-on a:focus-visible .arrow-up-right,.motion-on a:active .arrow-up-right { transform:translate(3px,-3px); }
+.motion-on .hero-actions a,.motion-on .nav-contact { transition:background-color 300ms ease,transform 220ms var(--motion-ease); }
+.motion-on .hero-actions a:active,.motion-on .nav-contact:active { transform:scale(.987); }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto!important; } .motion-on a .arrow-up-right,.motion-on .hero-actions a,.motion-on .nav-contact { transition:none!important; transform:none!important; } }
+
+/* Motion 02: larger staged reveals and a composed photographic entrance. */
+.motion-on .motion-pending { opacity:0; transform:translateY(36px); }
+.motion-on .hero-image img { transform-origin:65% 50%; }
+.motion-progress { position:fixed; top:0; left:0; right:0; height:3px; z-index:99; background:#e5cfa3; transform:scaleX(0); transform-origin:left; pointer-events:none; }
+.motion-on .project h3,.motion-on .principle { transition:color 350ms ease,transform 600ms var(--motion-ease); }
+@media(hover:hover) {
+  .motion-on a:hover .arrow-up-right { transform:translate(6px,-6px); }
+  .motion-on .principle:hover { transform:translateY(-5px); }
+}
+.motion-on a:focus-visible .arrow-up-right,.motion-on a:active .arrow-up-right { transform:translate(6px,-6px); }
+.motion-on .project-actions a,.motion-on .contact-actions a { text-underline-offset:5px; transition:color 250ms ease,text-underline-offset 350ms ease; }
+.motion-on .project-actions a:hover { text-underline-offset:9px; }
+@media(prefers-reduced-motion:reduce) { .motion-pending { opacity:1!important; transform:none!important; } .motion-progress { display:none; } .motion-on .principle { transition:none!important; transform:none!important; } }
