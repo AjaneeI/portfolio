@@ -6,12 +6,14 @@ import "./events.css";
 type Workshop = (typeof workshops)[number];
 const base = "https://ajaneeigharo.com";
 export function workshopMetadata(workshop: Workshop): Metadata {
-  const title = `${workshop.name} | Boston AI Workshop`;
+  const gtm = workshop.id === "gtm-engineering";
+  const title = gtm ? "GTM Engineering Workshop in Boston | Dec 3, 2026" : "Becoming AI-First Workshop in Boston | Dec 11, 2026";
+  const description = gtm ? "Free GTM engineering workshop with Amrutha Killada at UMass Boston on Dec 3. Practice AI-powered customer acquisition. Open to all; no coding required." : "Free AI workflow workshop with Alex Turgeon and Logan Reilly at UMass Boston on Dec 11. Practice context capture and skill design. Open to all.";
   const url = `${base}/events/${workshop.id}`;
-  return { title: { absolute: title }, description: workshop.summary,
+  return { title: { absolute: title }, description,
     alternates: { canonical: url },
-    openGraph: { title, description: workshop.summary, url, type: "website", images: ["/og.png"] },
-    twitter: { card: "summary_large_image", title, description: workshop.summary, images: ["/og.png"] } };
+    openGraph: { title, description, url, type: "website", images: ["/og.png"] },
+    twitter: { card: "summary_large_image", title, description, images: ["/og.png"] } };
 }
 
 export function WorkshopDetail({ workshop }: { workshop: Workshop }) {
