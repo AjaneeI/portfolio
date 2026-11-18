@@ -1,0 +1,56 @@
+.events-page { background:var(--cream); }
+.events-hero { background:#35205b; color:#fff; padding:clamp(74px,9vw,142px) clamp(24px,7vw,112px); }
+.events-hero-inner { max-width:1100px; }
+.events-eyebrow,.events-section-label { margin:0; font-size:12px; font-weight:750; text-transform:uppercase; letter-spacing:.17em; }
+.events-eyebrow { color:#dcd0fa; }
+.events-hero h1 { margin:28px 0 24px; font:400 clamp(55px,8.5vw,122px)/.95 Georgia,serif; letter-spacing:-.06em; }
+.events-hero h1 em { color:#dbcbff; font-weight:400; }
+.events-deck { margin:0; font:400 clamp(26px,3.7vw,52px)/1.12 Georgia,serif; letter-spacing:-.03em; }
+.events-motto { margin:20px 0 28px; color:#dceca0; font-size:clamp(17px,2.2vw,23px); font-weight:700; }
+.events-intro { max-width:720px; margin:0; font-size:clamp(17px,1.7vw,20px); line-height:1.65; color:#f3eefb; }
+.events-byline { margin:26px 0 0; color:#e1d4fa; font-size:14px; }
+.events-primary-cta { display:inline-flex; align-items:center; justify-content:space-between; gap:22px; min-height:58px; margin-top:30px; padding:12px 22px; border-radius:8px; background:#dceca0; color:#1a1630; font-size:13px; font-weight:750; line-height:1.5; }
+.events-primary-cta:hover { background:#f1f8cb; }
+.events-section { padding:clamp(68px,7vw,110px) clamp(24px,7vw,112px); }
+.events-heading { display:grid; gap:14px; max-width:850px; }
+.events-section-label { color:var(--green); }
+.events-heading h2 { margin:0; font:400 clamp(39px,5.8vw,76px)/1.05 Georgia,serif; letter-spacing:-.045em; }
+.events-heading > p:last-child { margin:0; font-size:18px; line-height:1.6; color:var(--soft); }
+.events-workshop-list { margin-top:46px; border-top:1px solid var(--line); }
+.events-workshop { scroll-margin-top:24px; display:grid; grid-template-columns:95px minmax(0,1fr); gap:30px; padding:40px 0; border-bottom:1px solid var(--line); }
+.events-date-block { display:flex; flex-direction:column; align-items:center; gap:2px; padding:16px 8px; align-self:start; background:var(--cream-deep); color:var(--green); border-radius:8px; }
+.events-date-block span { font-size:11px; font-weight:750; letter-spacing:.14em; }
+.events-date-block strong { font:400 50px/1.1 Georgia,serif; }
+.events-workshop-content { max-width:920px; }
+.events-workshop-date { margin:0; color:var(--green); font-size:12px; font-weight:750; text-transform:uppercase; letter-spacing:.07em; }
+.events-workshop h3 { margin:15px 0 10px; font:400 clamp(27px,3.1vw,44px)/1.12 Georgia,serif; letter-spacing:-.025em; }
+.events-speakers { margin:0; font-weight:750; }
+.events-workshop-content > p:not(.events-workshop-date):not(.events-speakers) { max-width:780px; margin:14px 0 0; color:var(--soft); font-size:16px; line-height:1.75; }
+.events-tag-list { display:flex; flex-wrap:wrap; gap:9px; padding:0; margin:20px 0 0; list-style:none; }
+.events-tag-list li { padding:7px 12px; border:1px solid rgba(23,75,57,.25); border-radius:30px; font-size:11px; font-weight:700; }
+.events-venue { max-width:850px; margin:30px 0 0; color:var(--soft); font-size:15px; line-height:1.65; }
+.events-calendar-section { background:#f0eadf; }
+.events-calendar-frame { margin-top:40px; padding:14px; border:1px solid var(--line); background:#fff; border-radius:14px; }
+.events-calendar-frame iframe { display:block; width:100%; min-height:620px; border:0; border-radius:8px; }
+.events-calendar-note { font-size:13px; color:var(--soft); margin:13px 0 0; }
+.events-faq-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px 52px; margin-top:40px; }
+.events-faq-item { border-top:1px solid var(--line); padding-top:22px; }
+.events-faq-item h3 { margin:0 0 12px; font:400 25px/1.23 Georgia,serif; }
+.events-faq-item p { margin:0; font-size:16px; line-height:1.7; color:var(--soft); }
+@media (max-width:760px) {
+  .events-hero { padding:65px 22px 76px; }
+  .events-hero h1 { font-size:clamp(50px,15vw,77px); }
+  .events-section { padding:70px 22px; }
+  .events-heading h2 { font-size:clamp(40px,10vw,58px); }
+  .events-workshop { grid-template-columns:66px minmax(0,1fr); gap:16px; }
+  .events-date-block { padding:12px 4px; }
+  .events-date-block strong { font-size:39px; }
+  .events-workshop-date { line-height:1.6; }
+  .events-calendar-frame { padding:6px; }
+  .events-calendar-frame iframe { min-height:710px; height:710px; }
+  .events-faq-list { grid-template-columns:1fr; gap:24px; }
+}
+@media (max-width:380px) {
+  .events-workshop { grid-template-columns:1fr; }
+  .events-date-block { width:70px; }
+}
