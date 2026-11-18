@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- Approved local monogram asset; no remote image dependency. */
 import React from "react";
 
 const events = [
@@ -21,7 +22,7 @@ export function HomeEvents() {
   return (
     <section className="home-events" id="series" aria-labelledby="home-events-title">
       <div className="home-events-brand">
-        <div className="home-events-mark" aria-hidden="true"><span>AP</span></div>
+        <div className="home-events-mark" aria-hidden="true"><img src="/applied-ai-in-practice-ap-monogram.png" alt="" width="480" height="480" loading="lazy" /></div>
         <div>
           <p className="home-events-eyebrow">Upcoming · Founder-led series</p>
           <h2 id="home-events-title">Applied AI in Practice</h2>
