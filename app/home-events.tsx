@@ -19,7 +19,7 @@ const events = [
 
 export function HomeEvents() {
   return (
-    <section className="home-events" aria-labelledby="home-events-title">
+    <section className="home-events" id="series" aria-labelledby="home-events-title">
       <div className="home-events-brand">
         <div className="home-events-mark" aria-hidden="true"><span>AP</span></div>
         <div>
@@ -41,7 +41,7 @@ export function HomeEvents() {
             </a>
           </article>
         ))}
-        <a className="home-events-calendar" href="https://lu.ma/applied-ai-in-practice" target="_blank" rel="noopener noreferrer">
+        <a className="home-events-calendar" href="https://luma.com/calendar/cal-Hn5j7FxO7A7Ensp" target="_blank" rel="noopener noreferrer">
           Explore the series <span aria-hidden="true">↗</span>
         </a>
       </div>
