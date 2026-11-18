@@ -6,10 +6,11 @@ const page = {
   title: "Agent Systems Evidence Scout | Ajanee Igharo",
   description: "An arXiv research agent with bounded tools, citation checks, regression tests, and documented integration evidence.",
   url: "https://ajaneeigharo.com/work/agent-systems-evidence-scout",
-  dateModified: "2026-10-28",
+  dateModified: "2026-11-18",
 };
 export const metadata = projectMetadata(page);
 const sections = [
+  ["What does this project demonstrate?", "A research agent can choose tools while deterministic Python independently enforces which arXiv citations are accepted. This is a local work sample with a token-free interface preview and an optional credentialed research path."],
   ["Problem", "Research agents can produce fluent answers while citing papers they never actually verified."],
   ["Engineering question", "How can a model choose a useful research path without controlling whether its own evidence is accepted?"],
   ["What I built", "A bounded arXiv research workflow using smolagents and Hugging Face inference. The model selects research tools; deterministic Python validates canonical arXiv identities, records verified papers for the current run, and withholds drafts that fail the citation contract."],

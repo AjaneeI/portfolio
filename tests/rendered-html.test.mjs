@@ -65,7 +65,7 @@ test('project pages publish self-contained article metadata', async () => {
       path: '/work/agent-systems-evidence-scout',
       title: 'Agent Systems Evidence Scout | Ajanee Igharo',
       description: 'An arXiv research agent with bounded tools, citation checks, regression tests, and documented integration evidence.',
-      modified: '2026-10-28',
+      modified: '2026-11-18',
     },
     {
       path: '/work/homeops-agent',
@@ -207,7 +207,7 @@ test('authored pages contain no em dashes', async () => {
 
 test('homepage and crawl files expose production discovery signals', async () => {
   const html = await page('/');
-  for (const expected of ['rel="canonical" href="https://ajaneeigharo.com"', 'property="og:image" content="https://ajaneeigharo.com/og.png"', 'rel="manifest" href="/manifest.webmanifest"', '"@type":"WebSite"', '"jobTitle":"AI Programs & Operations Coordinator"']) assert.ok(html.includes(expected), expected);
+  for (const expected of ['rel="canonical" href="https://ajaneeigharo.com"', 'property="og:image" content="https://ajaneeigharo.com/og.png"', 'rel="manifest" href="/manifest.webmanifest"', '"@type":"WebSite"', '"jobTitle":"Applied AI Engineer"']) assert.ok(html.includes(expected), expected);
   const robots = await response('/robots.txt');
   assert.equal(robots.status, 200);
   assert.match(await robots.text(), /Sitemap: https:\/\/ajaneeigharo\.com\/sitemap\.xml/);
@@ -304,3 +304,19 @@ test('public homepage preserves monochrome SVG arrows in hero and shared navigat
  assert.match(html, /rel="canonical" href="https:\/\/ajaneeigharo.com\/events"/);
  assert.ok((await (await response('/sitemap.xml')).text()).includes('https://ajaneeigharo.com/events'));
  });
+
+test('workshop detail pages expose accurate single-event schema and registration', async () => {
+ for (const [slug,registration,date] of [['gtm-engineering','1sts0xgz','2026-12-03T15:30:00-05:00'],['becoming-ai-first','gzrgw7b0','2026-12-11T12:00:00-05:00']]) {
+ const html=await page('/events/'+slug);
+ assert.equal((html.match(/<h1/g)||[]).length,1);
+ assert.ok(html.includes('"@type":"Event"'));
+ assert.ok(html.includes('"startDate":"'+date+'"'));
+ assert.ok(html.includes('https://luma.com/'+registration));
+ assert.ok(html.includes('"price":0'));
+ assert.ok(html.includes('No coding experience is required.'));
+ assert.ok(html.includes('https://ajaneeigharo.com/events/'+slug));
+ }
+ const home=await page('/');
+ assert.doesNotMatch(home,/I serve as AI Programs/);
+ assert.ok(home.includes('jobTitle":"Applied AI Engineer'));
+});

@@ -9,7 +9,7 @@ const page = {
   title: "AI Workflow Reliability Console | Ajanee Igharo",
   description: "A local Python and SQLite console to inspect AI workflow evidence, distinguish claims from verification, compare compatible runs, and export reports.",
   url: "https://ajaneeigharo.com/work/ai-workflow-reliability-console",
-  dateModified: "2026-10-28",
+  dateModified: "2026-11-18",
 };
 
 export const metadata = projectMetadata(page);
@@ -171,6 +171,15 @@ export default function Page() {
             interoperability remains partial, and imported review claims do not become
             independent verification. The captures use synthetic or preserved evidence.
           </p>
+        </section>
+        <section>
+          <h2>Questions about the evidence</h2>
+          <h3>Does AWRC run or verify an AI agent?</h3>
+          <p>AWRC imports and inspects supplied evidence. It does not run an agent, and a source-reported success is not independent verification.</p>
+          <h3>What did Ajanee contribute?</h3>
+          <p>I own the project and directed its agent-assisted development, including the review workflow and the distinction between reported outcomes and independent confirmation.</p>
+          <h3>Where can someone check the result?</h3>
+          <p>The downloadable source package, verification record, and synthetic comparison example above let a reader inspect the recorded checks and their limits. They do not establish production deployment or adoption.</p>
         </section>
         <section>
           <h2>What comes next</h2>

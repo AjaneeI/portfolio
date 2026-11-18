@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteNav } from "../site-nav";
 import "./events.css";
 import { BlurFade } from "./blur-fade";
+import { workshops } from "./workshops";
 
 const siteUrl = "https://ajaneeigharo.com";
 const pageUrl = siteUrl + "/events";
@@ -29,38 +30,7 @@ export const metadata: Metadata = {
   },
 };
 
-const workshops = [
-  {
-    id: "gtm-engineering",
-    day: "03",
-    month: "DEC",
-    dateLabel: "Thursday, December 3, 2026",
-    starts: "2026-12-03T15:30:00-05:00",
-    ends: "2026-12-03T16:45:00-05:00",
-    timeLabel: "3:30–4:45 PM ET",
-    name: "GTM Engineering: AI-Powered Go-to-Market Workflows",
-    registrationUrl: "https://luma.com/1sts0xgz",
-    speakers: "Amrutha “Amu” Killada",
-    summary:
-      "Explore an emerging career combining AI, business, marketing, and technology. Practice identifying potential customers, creating a go-to-market strategy, and building AI-enabled customer acquisition workflows.",
-    tags: ["Hands-on", "AI for business", "AI careers", "No coding required"],
-  },
-  {
-    id: "becoming-ai-first",
-    day: "11",
-    month: "DEC",
-    dateLabel: "Friday, December 11, 2026",
-    starts: "2026-12-11T12:00:00-05:00",
-    ends: "2026-12-11T13:30:00-05:00",
-    timeLabel: "12:00–1:30 PM ET",
-    name: "Becoming AI-First: Context Capture & Starting with the Why",
-    registrationUrl: "https://luma.com/gzrgw7b0",
-    speakers: "Alex Turgeon and Logan Reilly of Valere",
-    summary:
-      "Learn why the context behind a workflow matters. See how teams capture tacit knowledge, turn it into useful specifications, and design an AI skill for a recurring task through a live demo and hands-on practice.",
-    tags: ["Hands-on", "AI workflows", "AI for business", "No coding required"],
-  },
-] as const;
+
 
 // A calendar landing page is not a Google single-event detail page. Use
 // CollectionPage + ItemList rather than claiming Event rich-result eligibility.
@@ -91,7 +61,7 @@ const structuredData = {
         "@type": "ListItem",
         position: index + 1,
         name: workshop.name,
-        url: pageUrl + "#" + workshop.id,
+        url: pageUrl + "/" + workshop.id,
       })),
     },
     {
@@ -177,12 +147,13 @@ export default function EventsPage() {
                     <time dateTime={workshop.starts}>{workshop.dateLabel}</time>
                     <span aria-hidden="true"> · </span>{workshop.timeLabel}
                   </p>
-                  <h3>{workshop.name}</h3>
+                  <h3><a href={`/events/${workshop.id}`}>{workshop.name}</a></h3>
                   <p className="events-speakers">With {workshop.speakers}</p>
                   <p>{workshop.summary}</p>
                   <ul className="events-tag-list" aria-label="Workshop topics">
                     {workshop.tags.map((tag) => <li key={tag}>{tag}</li>)}
                   </ul>
+                  <a className="events-details-link" href={`/events/${workshop.id}`}>Workshop details</a>{" "}
                   <a className="events-register" href={workshop.registrationUrl} target="_blank" rel="noopener noreferrer">Register <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
