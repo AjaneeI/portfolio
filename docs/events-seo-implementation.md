@@ -2,7 +2,7 @@
 
 ## Goal and publishing boundary
 Create a crawlable workshop-series landing page at https://ajaneeigharo.com/events with a responsive live Luma calendar.
-Workshop cards link directly to their confirmed Luma event pages. The separate series-calendar CTA uses https://lu.ma/applied-ai-in-practice.
+Workshop cards link directly to their confirmed Luma event pages. The separate series-calendar CTA uses https://luma.com/calendar/cal-Hn5j7FxO7A7Ensp.
 
 IMPORTANT: This GitHub main branch is older than the live OpenAI Sites production project. GitHub changes DO NOT deploy to ajaneeigharo.com. Existing draft PR #3 documents Sites version 45 published on Nov 16, 2026, without merging its GitHub PR. Do not publish this whole branch as a replacement. Reconcile its discrete changes with the latest production Sites source before merging or deploying.
 
