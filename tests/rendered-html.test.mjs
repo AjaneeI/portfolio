@@ -226,3 +226,35 @@ test('Closing the Loop has one canonical route and stale route redirects permane
   assert.equal(stale.status, 308);
   assert.equal(stale.headers.get('location'), 'http://localhost/work/closing-the-loop');
 });
+
+
+test('Applied AI in Practice series has crawlable content, canonical SEO metadata, and one registration destination', async () => {
+  const html = await page('/events');
+  for (const phrase of [
+    'Applied AI', 'in Practice.', 'The future of AI is being built here.',
+    'GTM Engineering', 'Amrutha', 'Becoming AI-First', 'Alex Turgeon', 'Logan Reilly',
+    'Venture Development Center', 'No. The December 3 and December 11 workshops',
+    'December 3, 2026', 'December 11, 2026',
+    'https://lu.ma/applied-ai-in-practice',
+    'https://luma.com/embed/calendar/cal-Hn5j7FxO7A7Ensp/events',
+    '"@type":"CollectionPage"', '"@type":"ItemList"', '"@type":"BreadcrumbList"',
+  ]) assert.ok(html.includes(phrase), phrase);
+  assert.equal((html.match(/<h1/g) || []).length, 1);
+  assert.match(html, /<link rel="canonical" href="https:\/\/ajaneeigharo.com\/events"/);
+  assert.match(html, /<meta name="description"/);
+  assert.match(html, /<iframe[^>]+title="Applied AI in Practice live calendar of upcoming workshops"/);
+  assert.doesNotMatch(html, /https:\/\/luma.com\/1sts0xgz|https:\/\/luma.com\/gzrgw7b0/);
+  assert.doesNotMatch(html, /\u2014/);
+  const sitemap = await response('/sitemap.xml');
+  assert.equal(sitemap.status, 200);
+  assert.match(await sitemap.text(), /https:\/\/ajaneeigharo.com\/events/);
+});
+
+test('Events navigation is visible and uses the correct active state', async () => {
+  for (const path of ['/', '/resume', '/events']) {
+    const html = await page(path);
+    assert.match(html, /href="\/events"/, path);
+  }
+  const events = await page('/events');
+  assert.match(events, /aria-current="page" href="\/events"/);
+});
