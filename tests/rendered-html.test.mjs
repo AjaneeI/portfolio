@@ -235,7 +235,7 @@ test('Applied AI in Practice pages expose crawlable workshop content and event-s
     'GTM Engineering', 'Amrutha', 'Becoming AI-First', 'Alex Turgeon', 'Logan Reilly',
     'Venture Development Center', 'No. The December 3 and December 11 workshops',
     'December 3, 2026', 'December 11, 2026',
-    'https://lu.ma/applied-ai-in-practice',
+    'https://luma.com/calendar/cal-Hn5j7FxO7A7Ensp',
     'https://luma.com/embed/calendar/cal-Hn5j7FxO7A7Ensp/events',
     'https://luma.com/1sts0xgz', 'https://luma.com/gzrgw7b0',
     '"@type":"CollectionPage"', '"@type":"ItemList"', '"@type":"BreadcrumbList"',
