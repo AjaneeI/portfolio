@@ -77,6 +77,7 @@ export default function RootLayout({
         />
         {children}
         <PortfolioMotion />
+        <script src="/portfolio-analytics.js" defer />
       </body>
     </html>
   );
