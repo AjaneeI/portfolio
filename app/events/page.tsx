@@ -38,6 +38,7 @@ const workshops = [
     ends: "2026-12-03T16:45:00-05:00",
     timeLabel: "3:30–4:45 PM ET",
     name: "GTM Engineering: AI-Powered Go-to-Market Workflows",
+    registrationUrl: "https://luma.com/1sts0xgz",
     speakers: "Amrutha “Amu” Killada",
     summary:
       "Explore an emerging career combining AI, business, marketing, and technology. Practice identifying potential customers, creating a go-to-market strategy, and building AI-enabled customer acquisition workflows.",
@@ -52,6 +53,7 @@ const workshops = [
     ends: "2026-12-11T13:30:00-05:00",
     timeLabel: "12:00–1:30 PM ET",
     name: "Becoming AI-First: Context Capture & Starting with the Why",
+    registrationUrl: "https://luma.com/gzrgw7b0",
     speakers: "Alex Turgeon and Logan Reilly of Valere",
     summary:
       "Learn why the context behind a workflow matters. See how teams capture tacit knowledge, turn it into useful specifications, and design an AI skill for a recurring task through a live demo and hands-on practice.",
@@ -179,6 +181,7 @@ export default function EventsPage() {
                   <ul className="events-tag-list" aria-label="Workshop topics">
                     {workshop.tags.map((tag) => <li key={tag}>{tag}</li>)}
                   </ul>
+                  <a className="events-register" href={workshop.registrationUrl} target="_blank" rel="noopener noreferrer">Register <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
             ))}
