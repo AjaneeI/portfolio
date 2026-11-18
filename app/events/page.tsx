@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteNav } from "../site-nav";
 import "./events.css";
+import { BlurFade } from "./blur-fade";
 
 const siteUrl = "https://ajaneeigharo.com";
 const pageUrl = siteUrl + "/events";
@@ -141,20 +142,21 @@ export default function EventsPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
         />
         <section className="events-hero" aria-labelledby="events-title">
+          <noscript><style>{`.events-reveal { opacity:1!important; transform:none!important; filter:none!important; }`}</style></noscript>
           <div className="events-hero-inner">
-            <p className="events-eyebrow">Boston's next generation of AI builders</p>
-            <h1 id="events-title">Applied AI <em>in Practice.</em></h1>
-            <p className="events-deck">The future of AI is being built here.</p>
-            <p className="events-motto">Learn. Build. Connect.</p>
-            <p className="events-intro">
+            <BlurFade className="events-reveal" delay={0} duration={0.55} direction="up" offset={6} blur="2px"><p className="events-eyebrow">Boston's next generation of AI builders</p></BlurFade>
+            <BlurFade className="events-reveal" delay={0.08} duration={0.55} direction="up" offset={6} blur="2px"><h1 id="events-title">Applied AI <em>in Practice.</em></h1></BlurFade>
+            <BlurFade className="events-reveal" delay={0.16} duration={0.55} direction="up" offset={6} blur="2px"><p className="events-deck">The future of AI is being built here.</p>
+            <p className="events-motto">Learn. Build. Connect.</p></BlurFade>
+            <BlurFade className="events-reveal" delay={0.24} duration={0.55} direction="up" offset={6} blur="2px"><p className="events-intro">
               Open to all. Hands-on AI workshops in Boston bringing students, emerging builders,
               and industry practitioners together to explore real-world applications
               of artificial intelligence, workflows, and careers.
             </p>
-            <p className="events-byline">Founded and led by Ajanee Igharo at UMass Boston.</p>
-            <a className="events-primary-cta" href={calendarUrl}>
+            <p className="events-byline">Founded and led by Ajanee Igharo at UMass Boston.</p></BlurFade>
+            <BlurFade className="events-reveal" delay={0.32} duration={0.55} direction="up" offset={6} blur="2px"><a className="events-primary-cta" href={calendarUrl} target="_blank" rel="noopener noreferrer">
               Explore the series calendar <span aria-hidden="true">↗</span>
-            </a>
+            </a></BlurFade>
           </div>
         </section>
 

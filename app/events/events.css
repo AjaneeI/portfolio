@@ -61,3 +61,9 @@
 
 .events-primary-cta { background:var(--cream); color:var(--green); }
 .events-primary-cta:hover { background:var(--cream-deep); }
+
+/* Preserve the existing typography margins through the upstream motion wrappers. */
+.events-reveal { display:flow-root; }
+@media (prefers-reduced-motion: reduce) {
+  .events-reveal { opacity:1!important; transform:none!important; filter:none!important; }
+}
