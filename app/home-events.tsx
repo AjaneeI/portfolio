@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element -- Approved local monogram asset; no remote image dependency. */
+/* eslint-disable @next/next/no-html-link-for-pages -- Use the site’s native navigation. */
 import React from "react";
 
 const events = [
@@ -42,7 +43,7 @@ export function HomeEvents() {
             </a>
           </article>
         ))}
-        <a className="home-events-calendar" href="https://luma.com/calendar/cal-Hn5j7FxO7A7Ensp" target="_blank" rel="noopener noreferrer">
+        <a className="home-events-calendar" href="/events">
           Explore the series <span aria-hidden="true">↗</span>
         </a>
       </div>

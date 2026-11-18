@@ -267,6 +267,6 @@ test('homepage features both workshops with matching direct Register links', asy
   assert.match(html, /class="home-events-register" href="https:\/\/luma.com\/1sts0xgz"/);
   assert.match(html, /class="home-events-register" href="https:\/\/luma.com\/gzrgw7b0"/);
   assert.match(html, /Explore the series/);
-  assert.match(html, /https:\/\/lu\.ma\/applied-ai-in-practice/);
+  assert.match(html, /class="home-events-calendar" href="\/events"/);
   assert.doesNotMatch(html, /Registration coming soon/);
 });
