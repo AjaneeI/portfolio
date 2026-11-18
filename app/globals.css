@@ -6,6 +6,8 @@ html { scroll-behavior:smooth; background:var(--cream); }
 body { margin:0; background:var(--cream); color:var(--ink); font-family:var(--font-geist-sans),Arial,sans-serif; overflow-x:hidden; }
 a { color:inherit; text-decoration:none; }
 img { display:block; max-width:100%; }
+.arrow-up-right { display:inline-block; width:1.25em; height:1.25em; flex-shrink:0; vertical-align:middle; }
+.hero-actions .arrow-up-right,.nav-contact .arrow-up-right,.contact-actions .arrow-up-right { width:24px; height:24px; }
 ::selection { background:#e7def4; color:var(--ink); }
 :focus-visible { outline:3px solid #a64225; outline-offset:4px; }
 .skip-link { position:fixed; left:16px; top:-80px; z-index:100; background:var(--ink); color:white; padding:12px 16px; }
@@ -141,6 +143,45 @@ img { display:block; max-width:100%; }
 .resume-cta p { max-width:660px; margin:0; font:400 23px/1.35 Georgia,serif; }
 .resume-cta a { flex:0 0 auto; padding-bottom:4px; border-bottom:1px solid var(--cream); color:var(--cream); text-transform:uppercase; font-size:13px; font-weight:750; letter-spacing:.11em; }
 
+
+/* Independent founder-led series, scoped to the existing cream-and-green editorial system. */
+.series-showcase { padding:0 clamp(28px,7vw,112px); background:var(--cream); scroll-margin-top:30px; }
+.series-frame { display:grid; grid-template-columns:132px minmax(0,1.15fr) minmax(340px,.95fr); gap:clamp(22px,3vw,48px); align-items:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:40px 0; }
+.series-identity { display:flex; justify-content:center; align-items:center; min-height:136px; border-right:1px solid var(--line); padding-right:24px; }
+.series-identity img { width:108px; height:auto; }
+.series-kicker { margin:0 0 14px; color:var(--green); text-transform:uppercase; font-size:11px; font-weight:750; letter-spacing:.18em; }
+.series-description h2 { max-width:640px; margin:0 0 14px; font:italic 400 clamp(39px,3.8vw,56px)/1.03 Georgia,"Times New Roman",serif; letter-spacing:-.05em; color:var(--green); }
+.series-tagline { margin:0; font-size:16px; line-height:1.5; }
+.series-credit { margin:12px 0 0; font:italic 16px/1.4 Georgia,"Times New Roman",serif; }
+.series-events { padding-left:clamp(20px,3vw,48px); border-left:1px solid var(--line); }
+.series-events-title { margin:0 0 6px; font-size:11px; font-weight:750; letter-spacing:.16em; text-transform:uppercase; color:var(--green); }
+.series-event { padding:16px 0 12px; border-bottom:1px solid var(--line); }
+.series-event-date { display:flex; flex-wrap:wrap; gap:4px 14px; align-items:baseline; margin-bottom:8px; }
+.series-event-date time { color:var(--green); text-transform:uppercase; font-size:11px; font-weight:750; letter-spacing:.06em; }
+.series-event-date small { color:var(--soft); font-size:12px; line-height:1.4; }
+.series-event-detail h4 { margin:0; font:400 18px/1.3 Georgia,"Times New Roman",serif; }
+.series-event-detail p { margin:7px 0 5px; font-size:13px; line-height:1.5; color:var(--soft); }
+.series-event-detail a { display:inline-flex; align-items:center; gap:6px; min-height:40px; font-size:13px; font-weight:750; color:var(--green); text-decoration:underline; text-underline-offset:4px; }
+.series-event-detail a:hover { color:#0c3024; }
+.series-registration-pending { display:inline-block; padding:10px 0; font-size:12px; font-weight:700; color:var(--soft); }
+.series-calendar-link { display:inline-flex; gap:20px; justify-content:space-between; align-items:center; margin-top:18px; min-height:44px; padding:0 16px; background:var(--green); border-radius:6px; color:var(--cream); font-size:12px; font-weight:750; text-transform:uppercase; letter-spacing:.06em; }
+.series-calendar-link:hover { background:#0e392a; color:var(--cream); }
+@media (max-width:1200px) {
+  .series-frame { grid-template-columns:110px minmax(0,1fr); gap:28px; }
+  .series-events { grid-column:1 / -1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:32px; border-left:0; padding:0; }
+  .series-events-title,.series-calendar-link { grid-column:1 / -1; }
+  .series-calendar-link { justify-self:start; }
+}
+@media (max-width:760px) {
+  .series-showcase { padding:0 22px; }
+  .series-frame { grid-template-columns:74px minmax(0,1fr); gap:24px 16px; padding:34px 0; }
+  .series-identity { min-height:76px; padding-right:10px; }
+  .series-identity img { width:64px; }
+  .series-description h2 { font-size:clamp(33px,8vw,50px); }
+  .series-tagline,.series-credit { font-size:14px; }
+  .series-events { grid-template-columns:minmax(0,1fr); }
+}
+
 @media (max-width:1020px) {
   .editorial-hero { min-height:850px; }.hero-copy { width:65%; padding-left:6vw; }.hero-copy h1 { font-size:clamp(66px,9.2vw,94px); }.project-evidence { grid-template-columns:1fr 1fr; }.project-evidence div:last-child { grid-column:1/-1; }.context > div { grid-template-columns:1fr; }.context div > p { margin-left:auto; }
 }
@@ -190,6 +231,7 @@ img { display:block; max-width:100%; }
   .publication-list li,.recognition-list li { padding:3px 0; }
   .resume-role-history { margin-top:7px; padding:5px 7px; }
 }
+
 
 /* Applied AI in Practice homepage feature */
 .home-events { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(360px,.95fr); gap:clamp(38px,5vw,82px); align-items:center; padding:84px clamp(28px,7vw,112px); border-bottom:1px solid var(--line); background:var(--cream); }
