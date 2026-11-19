@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages -- Native anchors preserve the established Vinext navigation behavior. */
 import type { Metadata } from "next";
 import { SiteNav } from "../site-nav";
 import { workshops } from "./workshops";

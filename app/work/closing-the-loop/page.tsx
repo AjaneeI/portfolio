@@ -31,7 +31,7 @@ const considerations = [
 ];
 
 const page = {
-  title: "Closing the Loop | Ajanee Igharo",
+  title: "Closing the Loop: Customer Portal Analytics | Ajanee Igharo",
   description: "Product analytics case study focused on measuring customer portal journeys, friction, follow-through, workflow outcomes, and responsible AI boundaries.",
   url: "https://ajaneeigharo.com/work/closing-the-loop",
   dateModified: "2026-09-22T17:22:33.065Z",

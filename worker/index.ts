@@ -38,6 +38,22 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
+    if (url.hostname === "www.ajaneeigharo.com") {
+      url.hostname = "ajaneeigharo.com";
+      url.protocol = "https:";
+      url.port = "";
+      return withSecurityHeaders(Response.redirect(url, 308));
+    }
+
+    if (url.pathname === "/Ajanee_Igharo_Applied_AI_Engineer_Resume.pdf") {
+      const asset = await env.ASSETS.fetch(request);
+      const response = withSecurityHeaders(asset);
+      if (response.ok) {
+        response.headers.set("Link", '<https://ajaneeigharo.com/Ajanee_Igharo_Applied_AI_Engineer_Resume.pdf>; rel="canonical"');
+      }
+      return response;
+    }
+
     if (url.pathname === "/work/mychart-patient-portal") {
       return withSecurityHeaders(Response.redirect(new URL("/work/closing-the-loop", url), 308));
     }

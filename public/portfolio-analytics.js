@@ -10,7 +10,7 @@
   const gtag = window.gtag;
   gtag("js", new Date());
   let referrer = "";
-  try { referrer = new URL(document.referrer).origin; } catch (_) { /* No referrer. */ }
+  try { referrer = new URL(document.referrer).origin; } catch { /* No referrer. */ }
   gtag("config", measurementId, {
     allow_google_signals: false,
     allow_ad_personalization_signals: false,
@@ -30,7 +30,7 @@
     const anchor = event.target instanceof Element ? event.target.closest("a[href]") : null;
     if (!anchor) return;
     let url;
-    try { url = new URL(anchor.href, location.origin); } catch (_) { return; }
+    try { url = new URL(anchor.href, location.origin); } catch { return; }
     let name;
     const parameters = { send_to: measurementId, transport_type: "beacon" };
     if (url.protocol === "mailto:") {

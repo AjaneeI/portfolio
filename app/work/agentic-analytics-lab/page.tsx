@@ -2,7 +2,7 @@ import { ArrowUpRight } from "../../arrow-up-right";
 import { projectMetadata, ProjectStructuredData } from "../../project-metadata";
 import { SiteNav } from "../../site-nav";
 const page = {
-  title: "Agentic Analytics Lab | Ajanee Igharo",
+  title: "Agentic Analytics Lab: Analytics Agent Evaluation | Ajanee Igharo",
   description: "Evaluation-driven analytics-agent lab testing when specialized execution is worth added complexity, with ClickHouse, guardrails, CI, and failure analysis.",
   url: "https://ajaneeigharo.com/work/agentic-analytics-lab",
   dateModified: "2026-10-28",

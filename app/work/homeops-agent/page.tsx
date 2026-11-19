@@ -2,7 +2,7 @@ import { ArrowUpRight } from "../../arrow-up-right";
 import { projectMetadata, ProjectStructuredData } from "../../project-metadata";
 import { SiteNav } from "../../site-nav";
 const page = {
-  title: "HomeOps Agent: Human-in-the-Loop AI | Ajanee Igharo",
+  title: "HomeOps Agent: Human-in-the-Loop Automation | Ajanee Igharo",
   description: "Human-in-the-loop AI prototype with explicit tool contracts, approval gates, simulated devices, failure handling, and audit logging.",
   url: "https://ajaneeigharo.com/work/homeops-agent",
   dateModified: "2026-10-28",

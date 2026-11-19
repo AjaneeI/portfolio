@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
-import test from 'node:test';
-const { default: worker } = await import('../dist/server/index.js');
+import test, { after } from 'node:test';
+import { createWorker } from './worker-test-runtime.mjs';
+const worker = createWorker();
+after(() => worker.dispose());
 async function page(path) {
   const res = await response(path);
   assert.equal(res.status, 200, path);
@@ -57,7 +59,7 @@ test('project pages publish self-contained article metadata', async () => {
   const projects = [
     {
       path: '/work/agentic-analytics-lab',
-      title: 'Agentic Analytics Lab | Ajanee Igharo',
+      title: 'Agentic Analytics Lab: Analytics Agent Evaluation | Ajanee Igharo',
       description: 'Evaluation-driven analytics-agent lab testing when specialized execution is worth added complexity, with ClickHouse, guardrails, CI, and failure analysis.',
       modified: '2026-10-28',
     },
@@ -70,12 +72,12 @@ test('project pages publish self-contained article metadata', async () => {
     {
       path: '/work/homeops-agent',
       modified: '2026-10-28',
-      title: 'HomeOps Agent: Human-in-the-Loop AI | Ajanee Igharo',
+      title: 'HomeOps Agent: Human-in-the-Loop Automation | Ajanee Igharo',
       description: 'Human-in-the-loop AI prototype with explicit tool contracts, approval gates, simulated devices, failure handling, and audit logging.',
     },
     {
       path: '/work/closing-the-loop',
-      title: 'Closing the Loop | Ajanee Igharo',
+      title: 'Closing the Loop: Customer Portal Analytics | Ajanee Igharo',
       description: 'Product analytics case study focused on measuring customer portal journeys, friction, follow-through, workflow outcomes, and responsible AI boundaries.',
       modified: '2026-09-22T17:22:33.065Z',
     },
@@ -331,4 +333,71 @@ test('supporting projects and Series remain discoverable without changing select
  const events=await page('/events');
  assert.ok(events.includes('GTM Engineering: Discover an emerging career at the intersection of AI, business, marketing, and technology.'));
  assert.ok(events.includes('href="https://luma.com/applied-ai-in-practice"'));
+});
+
+
+test('www requests redirect permanently without losing path or query', async () => {
+  const result = await worker.fetch(new Request('https://www.ajaneeigharo.com/resume?source=example'), {}, {waitUntil(){},passThroughOnException(){}});
+  assert.equal(result.status, 308);
+  assert.equal(result.headers.get('location'), 'https://ajaneeigharo.com/resume?source=example');
+});
+
+test('resume downloads expose one clean indexable PDF URL', async () => {
+  const html = await page('/resume');
+  const links = [...html.matchAll(/href="([^"]+\.pdf[^"]*)"/g)].map(m => m[1]);
+  assert.ok(links.length >= 1);
+  assert.ok(links.every(link => link === '/Ajanee_Igharo_Applied_AI_Engineer_Resume.pdf'));
+});
+
+test('PDF responses retain asset bytes and declare their canonical', async () => {
+  const calls = [];
+  const asset = new Uint8Array([37,80,68,70,45]);
+  const pdfWorker = createWorker(async request => {
+    calls.push(new URL(request.url).pathname);
+    return new Response(asset, {headers:{'content-type':'application/pdf'}});
+  });
+  after(() => pdfWorker.dispose());
+  for (const suffix of ['', '?v=20261118-approved']) {
+    const result = await pdfWorker.fetch(new Request('https://ajaneeigharo.com/Ajanee_Igharo_Applied_AI_Engineer_Resume.pdf'+suffix));
+    assert.equal(result.status, 200);
+    assert.equal(result.headers.get('content-type'),'application/pdf');
+    assert.equal(result.headers.get('link'),'<https://ajaneeigharo.com/Ajanee_Igharo_Applied_AI_Engineer_Resume.pdf>; rel="canonical"');
+    assert.equal(result.headers.get('x-robots-tag'),null);
+    assert.deepEqual(new Uint8Array(await result.arrayBuffer()),asset);
+  }
+  assert.equal(calls.length,2);
+});
+
+test('homepage images distinguish decorative alt text from missing attributes', async () => {
+  const html = await page('/');
+  const markup = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '');
+  const images = [...markup.matchAll(/<img\b[^>]*>/g)].map(m => m[0]);
+  assert.ok(images.length >= 9);
+  assert.ok(images.every(image => /\balt="[^"]*"/.test(image)));
+  assert.match(html, /aria-hidden="true"><img[^>]*alt=""/);
+});
+
+
+test('ended appointment uses historical verbs without changing approved dates', async () => {
+ const html=await page('/resume');
+ assert.match(html,/Coordinated applied AI programs/);
+ assert.match(html,/Supported the Applied AI Microcredential Program; co-developed Module 2/);
+ assert.match(html,/Nov 2025 to Nov 2026/);
+});
+
+
+test('search metadata is present in the initial HTML head', async () => {
+ for (const path of ['/', '/resume', '/events', '/events/gtm-engineering', '/events/becoming-ai-first', '/work/agentic-analytics-lab', '/work/homeops-agent', '/work/closing-the-loop', '/work/agent-systems-evidence-scout', '/work/enterprise-knowledge-validation-mcp', '/work/ai-workflow-reliability-console', '/work/autonomous-repository-maintenance-system']) {
+  const html=await page(path);
+  const head=html.slice(0,html.indexOf('</head>'));
+  assert.match(head,/<meta name="description" content="[^"]+"/,path);
+  assert.match(head,/<link rel="canonical"/,path);
+ }
+});
+
+test('events hero is visible in server HTML before client animation scripts', async () => {
+ const html=(await page('/events')).replace(/<script\b[^>]*>[\s\S]*?<\/script>/g,'');
+ const hero=html.match(/<section class="events-hero"[\s\S]*?<\/section>/)?.[0];
+ assert.ok(hero);
+ assert.doesNotMatch(hero, /opacity:\s*0|filter:\s*blur\([1-9]/);
 });

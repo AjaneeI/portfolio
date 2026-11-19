@@ -1,6 +1,8 @@
+> Deployment source: the Sites repository for project `appgprj_6a77ef93ffe481918671673f4ff051da`. This public GitHub mirror is synchronized with deployed source commit `6af49ca867b0cb291f8d293d6bcab6c5c391eb56` (Version 53). Pushing to GitHub alone does not publish the site. See [release notes](docs/seo-release.md).
+
 # Ajanee Igharo | Applied AI Engineer
 
-Production source for [ajaneeigharo.com](https://ajaneeigharo.com), an evidence-oriented portfolio for applied AI engineering and AI for knowledge work.
+Public source mirror for [ajaneeigharo.com](https://ajaneeigharo.com), an evidence-oriented portfolio for applied AI engineering and AI for knowledge work.
 
 ## Portfolio contract
 
