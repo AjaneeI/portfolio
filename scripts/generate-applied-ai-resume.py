@@ -48,7 +48,7 @@ entry(link('https://ajaneeigharo.com/work/ai-workflow-reliability-console','AI W
 ])
 section('Experience')
 entry('AI Programs &amp; Operations Coordinator','Paul English Applied AI Institute, UMass Boston | Nov 2025 - Nov 2026',[
-'Coordinate cross-functional AI programs and Summer 2026 career-advisor workshop operations; co-develop Module 2 agent exercises with Rebaz Kamal using Python, OpenRouter, and Google Colab.'
+'Coordinated cross-functional AI programs and Summer 2026 career-advisor workshop operations; co-developed Module 2 agent exercises with Rebaz Kamal using Python, OpenRouter, and Google Colab.'
 ])
 entry('Financial Consulting &amp; Analytics Intern',"Girls' LEAP | Jan 2026 - Mar 2026",[
 'Translated QuickBooks and treasury records into clearer financial decision-support information.'

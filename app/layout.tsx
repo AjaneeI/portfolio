@@ -18,8 +18,7 @@ const geistMono = Geist_Mono({
 
 const siteUrl = "https://ajaneeigharo.com";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
+export const metadata: Metadata = {
     metadataBase: new URL(siteUrl),
     title: {
       default: "Ajanee Igharo | Applied AI Engineer",
@@ -53,8 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: "Agents, evaluation, workflow automation, guardrails, and AI systems designed for real-world work.",
       images: ["/og.png"],
     },
-  };
-}
+};
 
 export default function RootLayout({
   children,
