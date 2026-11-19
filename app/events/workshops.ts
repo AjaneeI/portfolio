@@ -7,7 +7,7 @@ export const workshops = [
     starts: "2026-12-03T15:30:00-05:00",
     ends: "2026-12-03T16:45:00-05:00",
     timeLabel: "3:30–4:45 PM ET",
-    name: "GTM Engineering: AI-Powered Go-to-Market Workflows",
+    name: "GTM Engineering: Discover an emerging career at the intersection of AI, business, marketing, and technology.",
     registrationUrl: "https://luma.com/1sts0xgz",
     speakers: "Amrutha “Amu” Killada",
     summary:
