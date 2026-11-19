@@ -11,11 +11,28 @@
   gtag("js", new Date());
   let referrer = "";
   try { referrer = new URL(document.referrer).origin; } catch { /* No referrer. */ }
+  // Campaign values are fixed public labels, never arbitrary query data or PII.
+  const approvedCampaigns = new Set([
+    "linkedin/social/portfolio_profile",
+    "linkedin/social/aal_walkthrough",
+    "x/social/aal_walkthrough",
+    "email/email/portfolio_outreach",
+    "linkedin/social/workshops",
+    "codex/test/measurement_check",
+  ]);
+  const query = new URLSearchParams(location.search);
+  const campaign = ["utm_source", "utm_medium", "utm_campaign"].map(key => query.get(key));
+  const campaignFields = campaign.every(Boolean) && approvedCampaigns.has(campaign.join("/")) ? {
+    campaign_source: campaign[0],
+    campaign_medium: campaign[1],
+    campaign_name: campaign[2],
+  } : {};
   gtag("config", measurementId, {
     allow_google_signals: false,
     allow_ad_personalization_signals: false,
     page_location: location.origin + location.pathname,
     page_referrer: referrer,
+    ...campaignFields,
   });
   const script = document.createElement("script");
   script.async = true;
