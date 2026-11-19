@@ -5,12 +5,19 @@ import vm from 'node:vm';
 const source = readFileSync(new URL('../public/portfolio-analytics.js', import.meta.url), 'utf8');
 function setup({ hostname = 'ajaneeigharo.com', privateSignal = false, search = '?private=example' } = {}) {
   const listeners = {}, scripts = [], window = {};
-  class Element { constructor(href) { this.href = href; } closest() { return this; } }
+  class Element { constructor(href, purpose) { this.href = href; this.purpose = purpose; } closest() { return this; } getAttribute() { return this.purpose; } }
   const document = { referrer: 'https://chatgpt.com/?sensitive=example', head: { appendChild: s => scripts.push(s) }, createElement: () => ({}), addEventListener: (name, callback) => listeners[name] = callback };
   const context = { window, document, location: { hostname, origin: `https://${hostname}`, pathname: '/events', search }, navigator: { globalPrivacyControl: privateSignal }, URL, URLSearchParams, Element, Date };
   vm.runInNewContext(source, context);
-  return { scripts, window, click: href => listeners.click?.({ target: new Element(href) }), again: () => vm.runInNewContext(source, context) };
+  return { scripts, window, click: (href, purpose) => listeners.click?.({ target: new Element(href, purpose) }), again: () => vm.runInNewContext(source, context) };
 }
+test('contact purpose accepts only fixed hiring or consulting labels without mailto contents', () => {
+  const s = setup();
+  for (const purpose of ['hiring', 'consulting', 'private@example.com']) s.click('mailto:private@example.com?subject=private', purpose);
+  const events = Array.from(s.window.dataLayer, x => Array.from(x)).filter(x => x[0] === 'event');
+  assert.deepEqual(events.map(x => x[2].contact_purpose), ['hiring', 'consulting', undefined]);
+  assert.doesNotMatch(JSON.stringify(events), /private|mailto|subject/);
+});
 test('tracks intended actions without custom email, URL or query payloads', () => {
   const s = setup();
   for (const url of ['https://luma.com/calendar/cal-Hn5j7FxO7A7Ensp','https://luma.com/1sts0xgz','https://luma.com/gzrgw7b0','/Ajanee_Igharo_Applied_AI_Engineer_Resume.pdf?v=private','mailto:someone@example.com']) s.click(url);

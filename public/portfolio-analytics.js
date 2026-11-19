@@ -53,6 +53,8 @@
     if (url.protocol === "mailto:") {
       name = "contact_click";
       parameters.destination_category = "email";
+      const purpose = anchor.getAttribute("data-contact-purpose");
+      if (["hiring", "consulting"].includes(purpose)) parameters.contact_purpose = purpose;
     } else if (["luma.com", "lu.ma"].includes(url.hostname)) {
       const slug = workshops[url.pathname];
       name = slug ? "workshop_registration_click" : "calendar_click";
