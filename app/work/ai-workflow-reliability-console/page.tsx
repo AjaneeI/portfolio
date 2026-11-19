@@ -9,7 +9,7 @@ const page = {
   title: "AI Workflow Reliability Console | Ajanee Igharo",
   description: "A local Python and SQLite console to inspect AI workflow evidence, distinguish claims from verification, compare compatible runs, and export reports.",
   url: "https://ajaneeigharo.com/work/ai-workflow-reliability-console",
-  dateModified: "2026-11-18",
+  dateModified: "2026-11-19",
 };
 
 export const metadata = projectMetadata(page);
@@ -93,6 +93,20 @@ export default function Page() {
             exports exact JSON or Markdown reports. The run list and inspection area keep
             the selected evidence close to the decision a reviewer needs to make.
           </p>
+        </section>
+
+        <section aria-labelledby="walkthrough-title">
+          <h2 id="walkthrough-title">Read the evidence in three steps</h2>
+          <div className={styles.copy}>
+            <p>AWRC imports records into a local workspace. It does not run the imported workflow, authenticate its author or turn a success label into independent proof. Use the three capture buttons below to follow the walkthrough.</p>
+            <h3>1. Inspect the record</h3>
+            <p>Choose “Inspect a run.” Read the source-reported outcome separately from the evidence assessment. “Success” tells you what the source says. “Independently verified: No” means a separate trusted check has not confirmed it. Those statements can coexist. A successful import means supported data was accepted, not that the task succeeded in the world.</p>
+            <h3>2. Compare compatible evidence</h3>
+            <p>Choose “Compare evidence.” The illustrative revision changes a task check, the reported outcome and its supporting artifact consistently. This inspects imported records; it does not measure a newly executed workflow. Before interpreting a difference, check that workflow, task, scope, configuration and checks support a compatible comparison.</p>
+            <h3>3. Read the refusal</h3>
+            <p>Choose “See a refusal.” This example changes only the scope revision. AWRC refuses the pairing and explains why rather than assigning an improvement score. A change in evaluation context must not silently become a claim that a workflow improved.</p>
+            <p>The captures show the actual local application with synthetic imported examples. The source package and dated verification summary let readers inspect the recorded checks and their limits; they do not establish production adoption or a new independent browser acceptance.</p>
+          </div>
         </section>
 
         <EvidenceCaptures id="awrc-captures" label="AI Workflow Reliability Console captures" captures={captures} />

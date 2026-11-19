@@ -61,7 +61,7 @@ test('project pages publish self-contained article metadata', async () => {
       path: '/work/agentic-analytics-lab',
       title: 'Agentic Analytics Lab: Analytics Agent Evaluation | Ajanee Igharo',
       description: 'Evaluation-driven analytics-agent lab testing when specialized execution is worth added complexity, with ClickHouse, guardrails, CI, and failure analysis.',
-      modified: '2026-10-28',
+      modified: '2026-11-19',
     },
     {
       path: '/work/agent-systems-evidence-scout',
@@ -400,4 +400,20 @@ test('events hero is visible in server HTML before client animation scripts', as
  const hero=html.match(/<section class="events-hero"[\s\S]*?<\/section>/)?.[0];
  assert.ok(hero);
  assert.doesNotMatch(hero, /opacity:\s*0|filter:\s*blur\([1-9]/);
+});
+
+test('AAL explainer separates supplied task type from route inference with source evidence', async () => {
+ const html=await page('/work/agentic-analytics-lab');
+ assert.match(html,/What does supplied routing metadata let us test/);
+ assert.match(html,/Known routes let me examine execution/);
+ assert.match(html,/conceptual system diagram/);
+ assert.match(html,/src="\/images\/aal-architecture.svg"/);
+ assert.match(html,/58add5e58e581be21d3511fc4cd2cb5be44f49b7/);
+ assert.match(html,/not a held-out generalization result/);
+});
+test('AWRC walkthrough makes inspect compare and refusal meanings explicit', async () => {
+ const html=await page('/work/ai-workflow-reliability-console');
+ for(const phrase of ['Read the evidence in three steps','Inspect the record','Compare compatible evidence','Read the refusal','does not run the imported workflow','does not measure a newly executed workflow']) assert.ok(html.includes(phrase),phrase);
+ assert.match(html,/awrc-overview.jpg/);
+ assert.match(html,/awrc-verification.json/);
 });
