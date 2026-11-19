@@ -70,7 +70,7 @@ test('project pages publish self-contained article metadata', async () => {
     {
       path: '/work/homeops-agent',
       modified: '2026-10-28',
-      title: 'HomeOps Agent | Ajanee Igharo',
+      title: 'HomeOps Agent: Human-in-the-Loop AI | Ajanee Igharo',
       description: 'Human-in-the-loop AI prototype with explicit tool contracts, approval gates, simulated devices, failure handling, and audit logging.',
     },
     {
@@ -319,4 +319,16 @@ test('workshop detail pages expose accurate single-event schema and registration
  const home=await page('/');
  assert.doesNotMatch(home,/I serve as AI Programs/);
  assert.ok(home.includes('jobTitle":"Applied AI Engineer'));
+});
+
+test('supporting projects and Series remain discoverable without changing selected work', async () => {
+ const home=await page('/');
+ const work=home.match(/<section[^>]*id="work"[\s\S]*?<\/section>/)?.[0];
+ assert.ok(work);
+ for (const path of ['/work/homeops-agent','/work/agent-systems-evidence-scout']) assert.ok(work.includes('href="'+path+'"'),path);
+ const resume=await page('/resume');
+ assert.match(resume, /href="\/events">Series<\/a>/);
+ const events=await page('/events');
+ assert.ok(events.includes('GTM Engineering: Discover an emerging career at the intersection of AI, business, marketing, and technology.'));
+ assert.ok(events.includes('href="https://luma.com/applied-ai-in-practice"'));
 });

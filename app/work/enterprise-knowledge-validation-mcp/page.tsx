@@ -6,7 +6,7 @@ import { projectMetadata, ProjectStructuredData } from "../../project-metadata";
 const repo = "https://github.com/AjaneeI/enterprise-knowledge-validation-mcp";
 const page = {
   title: "Enterprise Knowledge Validation MCP | Ajanee Igharo",
-  description: "A read-only Python MCP server checks procedure status and action-readiness evidence with deterministic validation, cited synthetic records and explicit human-review boundaries.",
+  description: "A read-only Python MCP server validates procedure status and action readiness using cited synthetic evidence and explicit human-review boundaries.",
   url: "https://ajaneeigharo.com/work/enterprise-knowledge-validation-mcp",
 };
 export const metadata = projectMetadata(page);
