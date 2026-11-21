@@ -9,7 +9,7 @@ const page = {
   title: "AI Workflow Reliability Console | Ajanee Igharo",
   description: "A local Python and SQLite console to inspect AI workflow evidence, distinguish claims from verification, compare compatible runs, and export reports.",
   url: "https://ajaneeigharo.com/work/ai-workflow-reliability-console",
-  dateModified: "2026-11-19",
+  dateModified: "2026-11-20",
 };
 
 export const metadata = projectMetadata(page);
@@ -50,8 +50,7 @@ export default function Page() {
         <p className="section-kicker">LOCAL EVIDENCE WORKSPACE · APPLIED AI ENGINEERING</p>
         <h1>What does a successful AI run actually prove?</h1>
         <p className="detail-lead">
-          AI Workflow Reliability Console makes source outcomes, supporting evidence,
-          and comparison limits visible in one local workspace.
+          AI Workflow Reliability Console is a local Python and SQLite tool for inspecting imported AI workflow evidence. It separates source-reported outcomes from what the available records support. It does not execute workflows or authenticate imported evidence.
         </p>
         <dl className={styles.projectFacts}>
           <div><dt>Stage</dt><dd>Local application · reviewed local candidate</dd></div>
