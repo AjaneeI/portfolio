@@ -11,6 +11,51 @@ async function page(path) {
 async function response(path) {
   return worker.fetch(new Request(`http://localhost${path}`, { headers: { accept: 'text/html' } }), { ASSETS: { fetch: async () => new Response('Not found', { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} });
 }
+
+// Strip markup without inserting spaces: missing JSX whitespace must stay visible.
+function textContent(markup) {
+  return markup.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '')
+    .replace(/<!--[^]*?-->/g, '').replace(/<[^>]+>/g, '')
+    .replace(/&#x27;|&#39;|&apos;/g, "'").replace(/&amp;/g, '&')
+    .replace(/\s+/g, ' ').trim();
+}
+
+test('homepage H1 keeps literal spaces between its styled fragments', async () => {
+  const html = await page('/');
+  const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1];
+  assert.ok(h1);
+  assert.equal(textContent(h1), 'systems for real-world workflows.');
+});
+
+for (const [path, className, expected] of [
+  ['/', 'hero-summary', 'I’m Ajanee Igharo, a Boston-based applied AI engineer. I build and evaluate agent systems for organizational workflows, with a focus on tool use, workflow automation, and human oversight.'],
+  ['/work/agentic-analytics-lab', 'detail-lead', 'Agentic Analytics Lab tests whether specialized execution improves a Python analytics agent when the task type is supplied. Its experiments use synthetic data and do not establish performance on free-text task routing.'],
+  ['/work/ai-workflow-reliability-console', 'detail-lead', 'AI Workflow Reliability Console is a local Python and SQLite tool for inspecting imported AI workflow evidence. It separates source-reported outcomes from what the available records support. It does not execute workflows or authenticate imported evidence.'],
+]) {
+  test(`initial HTML exposes the approved identity or evidence boundary: ${path}`, async () => {
+    const html = (await page(path)).replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '');
+    const lead = html.match(new RegExp(`<p class="${className}">([\\s\\S]*?)<\\/p>`))?.[1];
+    assert.ok(lead);
+    assert.equal(textContent(lead), expected);
+  });
+}
+
+test('parsed article author and publisher share the existing canonical Person identity', async () => {
+  const paths = ['/work/agentic-analytics-lab', '/work/ai-workflow-reliability-console', '/work/agent-systems-evidence-scout', '/work/homeops-agent', '/work/closing-the-loop', '/work/enterprise-knowledge-validation-mcp', '/work/autonomous-repository-maintenance-system'];
+  for (const path of paths) {
+    const html = await page(path);
+    const nodes = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)]
+      .flatMap(match => { const data = JSON.parse(match[1]); return data['@graph'] ?? [data]; });
+    const person = nodes.find(node => node['@type'] === 'Person' && node['@id'] === 'https://ajaneeigharo.com/#person');
+    const article = nodes.find(node => node['@type'] === 'TechArticle');
+    assert.ok(person, `${path}: established Person`);
+    assert.ok(article, `${path}: article`);
+    for (const role of ['author', 'publisher']) {
+      assert.equal(article[role]['@id'], 'https://ajaneeigharo.com/#person', `${path}: ${role}`);
+      assert.equal(article[role]['@id'], person['@id']);
+    }
+  }
+});
 test('homepage has the new identity, selected work, and functional routes', async () => {
   const html = await page('/');
   for (const expected of ['Applied AI Engineer', 'systems for', 'real-world', 'Agentic Analytics Lab', 'Enterprise Knowledge Validation MCP', 'AI Workflow Reliability Console', 'Autonomous Repository Maintenance System', 'Closing the Loop', 'I care about what happens after the demo', '/resume', '/work/agentic-analytics-lab', '/work/ai-workflow-reliability-console', '/work/autonomous-repository-maintenance-system', 'mailto:ajaneeigharo@gmail.com']) assert.ok(html.includes(expected), expected);
@@ -61,7 +106,7 @@ test('project pages publish self-contained article metadata', async () => {
       path: '/work/agentic-analytics-lab',
       title: 'Agentic Analytics Lab: Analytics Agent Evaluation | Ajanee Igharo',
       description: 'Evaluation-driven analytics-agent lab testing when specialized execution is worth added complexity, with ClickHouse, guardrails, CI, and failure analysis.',
-      modified: '2026-11-19',
+      modified: '2026-11-20',
     },
     {
       path: '/work/agent-systems-evidence-scout',
