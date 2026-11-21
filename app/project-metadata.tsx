@@ -55,8 +55,8 @@ export function ProjectStructuredData(props: ProjectMeta) {
     description: props.description,
     url: props.url,
     mainEntityOfPage: { "@type": "WebPage", "@id": props.url },
-    author: { "@type": "Person", ...author },
-    publisher: { "@type": "Person", name: author.name, url: author.url },
+    author: { "@type": "Person", ...author, "@id": "https://ajaneeigharo.com/#person" },
+    publisher: { "@type": "Person", name: author.name, url: author.url, "@id": "https://ajaneeigharo.com/#person" },
     ...(props.datePublished ? { datePublished: props.datePublished } : {}),
     ...(props.dateModified ? { dateModified: props.dateModified } : {}),
   };

@@ -7,7 +7,7 @@ const page = {
   title: "Agentic Analytics Lab: Analytics Agent Evaluation | Ajanee Igharo",
   description: "Evaluation-driven analytics-agent lab testing when specialized execution is worth added complexity, with ClickHouse, guardrails, CI, and failure analysis.",
   url: "https://ajaneeigharo.com/work/agentic-analytics-lab",
-  dateModified: "2026-11-19",
+  dateModified: "2026-11-20",
 };
 export const metadata = projectMetadata(page);
 const sections = [
@@ -23,7 +23,7 @@ const sections = [
   ["Current research status", "As of October 28, later benchmark and evidence-capture engineering includes inactive preparation under review. Live capture qualification remains deferred, evaluator acceptance is open, the statistical method is not frozen, and final evaluation has not begun. Engineering checks do not establish new scientific results or acceptance of those gates."],
   ["What comes next", "Qualify the operational evidence and accept the evaluator, common-runtime comparison, and statistical protocol before making a new comparison claim. A runnable strong single-agent implementation exists; its existence alone does not establish an accepted comparison anchor. Held-out route-inference evaluation remains separate from the development fixtures."],
 ];
-export default function Page() { return <main><ProjectStructuredData {...page} /><SiteNav label="Case study navigation" /><article className="detail" id="main-content"><p className="section-kicker">FLAGSHIP · APPLIED AI ENGINEERING</p><h1>When is more agent complexity actually worth it?</h1><p className="detail-lead">Agentic Analytics Lab is an implemented analytics-agent baseline and a test bed for architecture decisions.</p><section aria-labelledby="supplied-routing-title"><h2 id="supplied-routing-title">What does supplied routing metadata let us test?</h2><div className={styles.copy}>
+export default function Page() { return <main><ProjectStructuredData {...page} /><SiteNav label="Case study navigation" /><article className="detail" id="main-content"><p className="section-kicker">FLAGSHIP · APPLIED AI ENGINEERING</p><h1>When is more agent complexity actually worth it?</h1><p className="detail-lead">Agentic Analytics Lab tests whether specialized execution improves a Python analytics agent when the task type is supplied. Its experiments use synthetic data and do not establish performance on free-text task routing.</p><section aria-labelledby="supplied-routing-title"><h2 id="supplied-routing-title">What does supplied routing metadata let us test?</h2><div className={styles.copy}>
 <p>An oracle-routed experiment starts with information a deployed router would usually have to infer: which kind of task it has been given. Supplying that information lets me ask a narrower question: does a different execution strategy help when the task category is already known?</p>
 <p>A person asks an analytics question. An end-to-end system has to decide what kind of work it requires and then do that work correctly. Either decision can fail. If both change at once, an improved final answer does not tell me which change helped.</p>
 <p>The lab keeps three lanes separate. The single-agent baseline establishes a comparison. The oracle-metadata lane uses frozen benchmark metadata to choose a deterministic handler or the existing local worker. The free-text routing lane asks whether a route can be inferred from the person&apos;s words.</p>
