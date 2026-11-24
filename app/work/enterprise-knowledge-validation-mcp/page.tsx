@@ -1,3 +1,4 @@
+import { ProjectContact } from "../_components/project-contact";
 /* eslint-disable @next/next/no-img-element -- Original repository SVG evidence is rendered directly. */
 import { ArrowUpRight } from "../../arrow-up-right";
 import { SiteNav } from "../../site-nav";
@@ -38,6 +39,6 @@ export default function Page() {
       </section>
       <p><a className="primary-link" href={repo}>View repository <ArrowUpRight /></a></p>
       <p><a href={`${repo}/blob/main/docs/verification.md`}>Verification record <ArrowUpRight /></a> · <a href={`${repo}/actions/runs/38957362583`}>Verified GitHub Actions run <ArrowUpRight /></a> · <a href={`${repo}/blob/main/evidence/demo-stdio.json`}>Full stdio transcript <ArrowUpRight /></a></p>
-    </article>
+    <ProjectContact /></article>
   </main>;
 }

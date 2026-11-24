@@ -163,7 +163,7 @@ test('project pages publish self-contained article metadata', async () => {
 
 test('resume is recruiter-scannable and exposes the existing PDF download', async () => {
   const html = await page('/resume');
-  const description = 'Ajanee Igharo is an MBA candidate building and evaluating reliable agent systems and implementing applied AI programs for real organizational workflows.';
+  const description = 'Explore Ajanee Igharo’s applied AI engineering projects, Python and SQL skills, AI program experience, and resume. Based in Boston.';
   assert.ok(html.includes('<title>Applied AI Engineer Resume | Ajanee Igharo</title>'));
   assert.ok(html.includes(`<meta name="description" content="${description}"`));
   assert.ok(html.includes(`<meta property="og:description" content="${description}"`));
@@ -462,4 +462,29 @@ test('AWRC walkthrough makes inspect compare and refusal meanings explicit', asy
  for(const phrase of ['Read the evidence in three steps','Inspect the record','Compare compatible evidence','Read the refusal','does not run the imported workflow','does not measure a newly executed workflow']) assert.ok(html.includes(phrase),phrase);
  assert.match(html,/awrc-overview.jpg/);
  assert.match(html,/awrc-verification.json/);
+});
+
+test('every case study closes with one hiring contact and a resume path', async () => {
+  for (const slug of ['agentic-analytics-lab', 'agent-systems-evidence-scout', 'ai-workflow-reliability-console', 'autonomous-repository-maintenance-system', 'closing-the-loop', 'enterprise-knowledge-validation-mcp', 'homeops-agent']) {
+    const html = await page(`/work/${slug}`);
+    const block = html.match(/<aside\b[^>]*aria-label="Hiring and resume"[^>]*>([\s\S]*?)<\/aside>/g) || [];
+    assert.equal(block.length, 1, slug);
+    assert.match(block[0], /data-contact-purpose="hiring"/);
+    assert.match(block[0], /href="mailto:ajaneeigharo@gmail.com\?subject=Boston%20hiring%20opportunity"/);
+    assert.match(block[0], /Discuss an applied AI role/);
+    assert.match(block[0], /href="\/resume"/);
+    assert.match(block[0], /Review my resume/);
+    assert.doesNotMatch(block[0], /utm_/);
+  }
+});
+
+test('resume search and social descriptions match the approved recruiter introduction', async () => {
+  const html = await page('/resume');
+  const expected = 'Explore Ajanee Igharo’s applied AI engineering projects, Python and SQL skills, AI program experience, and resume. Based in Boston.';
+  for (const key of ['name="description"', 'property="og:description"', 'name="twitter:description"']) {
+    const tag = html.match(new RegExp(`<meta[^>]*${key}[^>]*>`))?.[0];
+    assert.ok(tag?.includes(expected), key);
+  }
+  assert.match(html, /Applied AI Engineer · Boston/);
+  assert.match(html, /Applied AI Engineer Resume \| Ajanee Igharo/);
 });

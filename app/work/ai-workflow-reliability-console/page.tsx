@@ -1,3 +1,4 @@
+import { ProjectContact } from "../_components/project-contact";
 /* eslint-disable @next/next/no-html-link-for-pages -- Native anchors preserve the portfolio's existing vinext navigation behavior. */
 import { ArrowUpRight } from "../../arrow-up-right";
 import { projectMetadata, ProjectStructuredData } from "../../project-metadata";
@@ -217,7 +218,7 @@ export default function Page() {
             </div>
           </div>
         </section>
-      </article>
+      <ProjectContact /></article>
     </main>
   );
 }
