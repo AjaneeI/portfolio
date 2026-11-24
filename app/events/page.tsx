@@ -189,7 +189,7 @@ export default function EventsPage() {
             />
           </div>
           <p className="events-calendar-note">
-            If the calendar does not load, use the registration link at the top of this page.
+            If the calendar does not load, use the series calendar link at the top of this page.
           </p>
         </section>
 

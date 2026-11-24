@@ -73,7 +73,7 @@ export default function Page() {
         <section>
           <h2>Problem</h2>
           <p>
-            A workflow can report success while leaving its reviewer unsure what completed,
+            A workflow can report success while leaving its reviewer unsure what was completed,
             which checks passed, or whether the evidence supports the claim. A single status
             hides those different questions.
           </p>

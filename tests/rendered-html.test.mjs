@@ -492,3 +492,22 @@ test('resume search and social descriptions match the approved recruiter introdu
   assert.match(html, /Applied AI Engineer · Boston/);
   assert.match(html, /Ajanee Igharo Resume \| Applied AI Engineer/);
 });
+
+
+test('resume headings retain spaces when responsive or print CSS hides line breaks', async () => {
+  const html = await page('/resume');
+  for (const [id, expected] of [
+    ['experience', 'Real problems. Useful work.'],
+    ['projects', 'Built with intention.'],
+    ['education', 'Building a strong foundation.'],
+    ['skills', 'Tools with purpose.'],
+    ['publications', 'Ideas, made useful.'],
+    ['leadership', 'Showing up. Following through.'],
+  ]) {
+    const heading = html.match(new RegExp(`<h2 id="${id}">([\\s\\S]*?)</h2>`))?.[1];
+    assert.ok(heading, id);
+    assert.equal(textContent(heading), expected, id);
+  }
+  const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1];
+  assert.equal(textContent(h1), 'Technical depth. Human context.');
+});
