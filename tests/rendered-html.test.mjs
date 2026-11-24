@@ -164,7 +164,11 @@ test('project pages publish self-contained article metadata', async () => {
 test('resume is recruiter-scannable and exposes the existing PDF download', async () => {
   const html = await page('/resume');
   const description = 'Explore Ajanee Igharo’s applied AI engineering projects, Python and SQL skills, AI program experience, and resume. Based in Boston.';
-  assert.ok(html.includes('<title>Applied AI Engineer Resume | Ajanee Igharo</title>'));
+  assert.ok(html.includes('<title>Ajanee Igharo Resume | Applied AI Engineer</title>'));
+  for (const key of ['property="og:title"', 'name="twitter:title"']) {
+    const tag = html.match(new RegExp(`<meta[^>]*${key}[^>]*>`))?.[0];
+    assert.ok(tag?.includes('content="Ajanee Igharo Resume | Applied AI Engineer"'), key);
+  }
   assert.ok(html.includes(`<meta name="description" content="${description}"`));
   assert.ok(html.includes(`<meta property="og:description" content="${description}"`));
   assert.ok(html.includes(`<meta name="twitter:description" content="${description}"`));
@@ -307,7 +311,7 @@ test('independent series preserves its place, credit, artwork and public calenda
   assert.doesNotMatch(series, /PEAAII|sponsor|waitlist/i);
   assert.match(series, /Featured in UMass Boston News/);
   const links = [...series.matchAll(/href="([^"]+)"/g)].map(match => match[1]);
-  assert.deepEqual(links, ['https://www.umb.edu/news/recent-news/mba-student-led-ai-workshop-and-speaker-series-coming-to-umass-boston/', 'https://luma.com/1sts0xgz', 'https://luma.com/gzrgw7b0', '/events']);
+  assert.deepEqual(links, ['https://www.umb.edu/news/recent-news/mba-student-led-ai-workshop-and-speaker-series-coming-to-umass-boston/#:~:text=The%20Applied%20AI%20in%20Practice%20workshop%20and%20speaker%20series%20was%20created', 'https://luma.com/1sts0xgz', 'https://luma.com/gzrgw7b0', '/events']);
 });
 
 test('workshops publish the approved programs and link both approved registration pages', async () => {
@@ -486,5 +490,5 @@ test('resume search and social descriptions match the approved recruiter introdu
     assert.ok(tag?.includes(expected), key);
   }
   assert.match(html, /Applied AI Engineer · Boston/);
-  assert.match(html, /Applied AI Engineer Resume \| Ajanee Igharo/);
+  assert.match(html, /Ajanee Igharo Resume \| Applied AI Engineer/);
 });
