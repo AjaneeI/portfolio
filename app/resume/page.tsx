@@ -10,12 +10,12 @@ const pdfUrl = "/Ajanee_Igharo_Applied_AI_Engineer_Resume.pdf";
 const resumeDescription = "Ajanee Igharo is an MBA candidate building and evaluating reliable agent systems and implementing applied AI programs for real organizational workflows.";
 
 export const metadata: Metadata = {
-  title: { absolute: "Applied AI Engineer Resume | Ajanee Igharo" },
+  title: { absolute: "Ajanee Igharo Resume | Applied AI Engineer" },
   description: resumeDescription,
   alternates: { canonical: "/resume" },
   authors: [{ name: "Ajanee Igharo", url: "https://ajaneeigharo.com" }],
-  openGraph: { title: "Applied AI Engineer Resume | Ajanee Igharo", description: resumeDescription, type: "website", url: "https://ajaneeigharo.com/resume", siteName: "Ajanee Igharo", locale: "en_US", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Ajanee Igharo portfolio preview." }] },
-  twitter: { card: "summary_large_image", site: "@AjaneeIgharo", title: "Applied AI Engineer Resume | Ajanee Igharo", description: resumeDescription, images: ["/og.png"] },
+  openGraph: { title: "Ajanee Igharo Resume | Applied AI Engineer", description: resumeDescription, type: "website", url: "https://ajaneeigharo.com/resume", siteName: "Ajanee Igharo", locale: "en_US", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Ajanee Igharo portfolio preview." }] },
+  twitter: { card: "summary_large_image", site: "@AjaneeIgharo", title: "Ajanee Igharo Resume | Applied AI Engineer", description: resumeDescription, images: ["/og.png"] },
 };
 
 type EntryProps = { title: string; organization?: string; context?: string; dates: string; items: string[]; technologies?: string; href?: string };

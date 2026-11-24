@@ -164,7 +164,11 @@ test('project pages publish self-contained article metadata', async () => {
 test('resume is recruiter-scannable and exposes the existing PDF download', async () => {
   const html = await page('/resume');
   const description = 'Ajanee Igharo is an MBA candidate building and evaluating reliable agent systems and implementing applied AI programs for real organizational workflows.';
-  assert.ok(html.includes('<title>Applied AI Engineer Resume | Ajanee Igharo</title>'));
+  assert.ok(html.includes('<title>Ajanee Igharo Resume | Applied AI Engineer</title>'));
+  for (const key of ['property="og:title"', 'name="twitter:title"']) {
+    const tag = html.match(new RegExp(`<meta[^>]*${key}[^>]*>`))?.[0];
+    assert.ok(tag?.includes('content="Ajanee Igharo Resume | Applied AI Engineer"'), key);
+  }
   assert.ok(html.includes(`<meta name="description" content="${description}"`));
   assert.ok(html.includes(`<meta property="og:description" content="${description}"`));
   assert.ok(html.includes(`<meta name="twitter:description" content="${description}"`));
