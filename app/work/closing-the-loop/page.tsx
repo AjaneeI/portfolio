@@ -1,3 +1,4 @@
+import { ProjectContact } from "../_components/project-contact";
 import { ArrowUpRight } from "../../arrow-up-right";
 /* eslint-disable @next/next/no-html-link-for-pages -- Native anchors avoid vinext's broken Link click interception. */
 
@@ -126,6 +127,7 @@ export default function DigitalPortalProductAnalyticsPage() {
         </div>
       </section>
 
+      <div className="case-hiring"><ProjectContact /></div>
       <section className="case-cta">
         <a className="back-link" href="/#work">Review the full portfolio <Arrow /></a>
         <p>

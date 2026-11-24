@@ -30,7 +30,7 @@ export function SeriesFeature() {
           <h2 id="series-title">Applied AI in Practice</h2>
           <p className="series-tagline">Hands-on learning. Industry connections. Practical AI.</p>
           <p className="series-credit">Founded &amp; led by Ajanee Igharo</p>
-          <p className="series-press"><a href="https://www.umb.edu/news/recent-news/mba-student-led-ai-workshop-and-speaker-series-coming-to-umass-boston/" target="_blank" rel="noopener noreferrer" aria-label="Featured in UMass Boston News (opens in a new tab)">Featured in UMass Boston News</a></p>
+          <p className="series-press"><a href="https://www.umb.edu/news/recent-news/mba-student-led-ai-workshop-and-speaker-series-coming-to-umass-boston/#:~:text=The%20Applied%20AI%20in%20Practice%20workshop%20and%20speaker%20series%20was%20created" target="_blank" rel="noopener noreferrer" aria-label="Featured in UMass Boston News (opens in a new tab)">Featured in UMass Boston News</a></p>
         </div>
         <div className="series-events">
           <h3 className="series-events-title">Upcoming workshops</h3>

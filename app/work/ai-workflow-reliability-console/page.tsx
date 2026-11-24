@@ -1,3 +1,4 @@
+import { ProjectContact } from "../_components/project-contact";
 /* eslint-disable @next/next/no-html-link-for-pages -- Native anchors preserve the portfolio's existing vinext navigation behavior. */
 import { ArrowUpRight } from "../../arrow-up-right";
 import { projectMetadata, ProjectStructuredData } from "../../project-metadata";
@@ -72,7 +73,7 @@ export default function Page() {
         <section>
           <h2>Problem</h2>
           <p>
-            A workflow can report success while leaving its reviewer unsure what completed,
+            A workflow can report success while leaving its reviewer unsure what was completed,
             which checks passed, or whether the evidence supports the claim. A single status
             hides those different questions.
           </p>
@@ -217,7 +218,7 @@ export default function Page() {
             </div>
           </div>
         </section>
-      </article>
+      <ProjectContact /></article>
     </main>
   );
 }

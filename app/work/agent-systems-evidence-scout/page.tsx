@@ -1,3 +1,4 @@
+import { ProjectContact } from "../_components/project-contact";
 import { ArrowUpRight } from "../../arrow-up-right";
 import { projectMetadata, ProjectStructuredData } from "../../project-metadata";
 import { SiteNav } from "../../site-nav";
@@ -23,5 +24,5 @@ const sections = [
 ];
 
 export default function Page() {
-  return <main><ProjectStructuredData {...page} /><SiteNav label="Case study navigation" /><article className="detail" id="main-content"><p className="section-kicker">EVIDENCE-CONTROLLED RESEARCH AGENT</p><h1>Let the model choose the path without waiving the evidence rules.</h1><p className="detail-lead">Agent Systems Evidence Scout separates model discretion from deterministic evidence enforcement.</p>{sections.map(([title, body]) => <section key={title}><h2>{title}</h2><p>{body}</p></section>)}<a className="primary-link" href="https://github.com/AjaneeI/agent-systems-evidence-scout">View repository <ArrowUpRight /></a><p><a href="https://huggingface.co/spaces/UMBInal/arxiv-agent-lab">Upstream course example</a> · <a href="https://github.com/AjaneeI/agent-systems-evidence-scout/actions/runs/37238401582">Audited CI record</a></p></article></main>;
+  return <main><ProjectStructuredData {...page} /><SiteNav label="Case study navigation" /><article className="detail" id="main-content"><p className="section-kicker">EVIDENCE-CONTROLLED RESEARCH AGENT</p><h1>Let the model choose the path without waiving the evidence rules.</h1><p className="detail-lead">Agent Systems Evidence Scout separates model discretion from deterministic evidence enforcement.</p>{sections.map(([title, body]) => <section key={title}><h2>{title}</h2><p>{body}</p></section>)}<a className="primary-link" href="https://github.com/AjaneeI/agent-systems-evidence-scout">View repository <ArrowUpRight /></a><p><a href="https://huggingface.co/spaces/UMBInal/arxiv-agent-lab">Upstream course example</a> · <a href="https://github.com/AjaneeI/agent-systems-evidence-scout/actions/runs/37238401582">Audited CI record</a></p><ProjectContact /></article></main>;
 }

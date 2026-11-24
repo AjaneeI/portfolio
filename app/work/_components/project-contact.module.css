@@ -1,0 +1,23 @@
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 32px;
+  margin-top: 40px;
+  padding: 28px 0 8px;
+  border-top: 1px solid var(--line);
+}
+.contact a {
+  color: var(--green);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.6;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.contact a:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 5px;
+}
+@media (max-width: 600px) {
+  .contact { flex-direction: column; gap: 16px; }
+}
