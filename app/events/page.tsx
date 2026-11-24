@@ -129,6 +129,13 @@ export default function EventsPage() {
           </div>
         </section>
 
+        <aside className="events-section events-press" aria-labelledby="events-press-title">
+          <p className="events-section-label">Featured in UMass Boston News</p>
+          <h2 id="events-press-title"><a href="https://www.umb.edu/news/recent-news/mba-student-led-ai-workshop-and-speaker-series-coming-to-umass-boston/" target="_blank" rel="noopener noreferrer" aria-label="MBA Student-Led AI Workshop and Speaker Series Coming to UMass Boston (opens in a new tab)">MBA Student-Led AI Workshop and Speaker Series Coming to UMass Boston</a></h2>
+          <p className="events-press-meta">UMass Boston News · <time dateTime="2026-11-23">November 23, 2026</time></p>
+          <p>UMass Boston featured the student-led workshop and speaker series founded by Ajanee Igharo.</p>
+        </aside>
+
         <section className="events-section events-upcoming" aria-labelledby="events-upcoming-title">
           <div className="events-heading">
             <p className="events-section-label">Upcoming in Boston</p>

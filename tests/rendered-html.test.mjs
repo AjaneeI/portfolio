@@ -304,9 +304,10 @@ test('independent series preserves its place, credit, artwork and public calenda
   assert.ok(html.indexOf('id="series"') > html.indexOf('id="hero-title"'));
   assert.ok(html.indexOf('id="series"') < html.indexOf('id="work"'));
   assert.match(series, /src="\/applied-ai-in-practice-ap-monogram\.png"/);
-  assert.doesNotMatch(series, /UMass|University|PEAAII|sponsor|waitlist/i);
+  assert.doesNotMatch(series, /PEAAII|sponsor|waitlist/i);
+  assert.match(series, /Featured in UMass Boston News/);
   const links = [...series.matchAll(/href="([^"]+)"/g)].map(match => match[1]);
-  assert.deepEqual(links, ['https://luma.com/1sts0xgz', 'https://luma.com/gzrgw7b0', '/events']);
+  assert.deepEqual(links, ['https://www.umb.edu/news/recent-news/mba-student-led-ai-workshop-and-speaker-series-coming-to-umass-boston/', 'https://luma.com/1sts0xgz', 'https://luma.com/gzrgw7b0', '/events']);
 });
 
 test('workshops publish the approved programs and link both approved registration pages', async () => {

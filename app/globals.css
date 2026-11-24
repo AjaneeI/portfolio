@@ -235,3 +235,6 @@ img { display:block; max-width:100%; }
 .opportunity-link { text-decoration:underline; text-underline-offset:4px; }
 .opportunity-link:focus-visible { outline:2px solid var(--green); outline-offset:5px; }
 .hero-actions .arrow-up-right,.nav-contact .arrow-up-right,.contact-actions .arrow-up-right { width:24px; height:24px; }
+
+.series-press { margin:14px 0 0; font-size:14px; line-height:1.5; }
+.series-press a { text-decoration:underline; text-underline-offset:4px; }
